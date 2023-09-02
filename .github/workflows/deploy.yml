@@ -21,7 +21,7 @@ jobs:
           - name: Criar ambiente do node
             uses: actions/setup-node@v3
             with:
-              node-version: [18.x, 19.x, 20.x]
+              node-version: 18
               cache: 'npm'
               cache-dependency-path: subdir/package-lock.json
           - name: Instalar dependências e executar o script de build
