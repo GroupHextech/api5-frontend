@@ -1,3 +1,5 @@
+// vue.config.js
 module.exports = {
-    publicPath: '/api5-frontend/'
+    publicPath: process.env.NODE_ENV === 'production' ? 
+    '/api5-frontend/' : '/'
 }
