@@ -21,15 +21,16 @@ jobs:
           - name: Criar ambiente do node
             uses: actions/setup-node@v3
             with:
-              node-version: [18.x, 19.x, 20.x]
+              node-version: 18
               cache: 'npm'
               cache-dependency-path: subdir/package-lock.json
           - name: Instalar dependências e executar o script de build
             run: |
               npm install i
               npm run build
-          - name: Deploy do build
-            uses: s0/git-pubish-subdir-action@develop
+          - name: Push git subdirectory as branch
+            uses: s0/git-publish-subdir-action@v2.6.0
+            
             env:
               REPO: self
               BRANCH: main
