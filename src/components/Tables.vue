@@ -16,17 +16,14 @@ const tables = [
 </script>
 
 <template>
-  <div class="row">
-    <div v-for="table in tables" class="col col-lg-1 board">
-      <Table :table="table"></Table>
+  <div>
+    <h2>Mesas</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-2">
+      <div v-for="table in tables" class="col">
+        <Table :table="table"></Table>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-.board {
-  display: flex;
-  margin: 0;
-  padding: 0.2rem;
-}
-</style>
+<style scoped></style>

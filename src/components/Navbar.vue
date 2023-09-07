@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <nav class="navbar fixed-top bg-primary" data-bs-theme="dark">
+  <nav class="navbar fixed-top" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="../assets/dino-icon-white.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -17,6 +17,10 @@
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Satisfy&display=swap');
+
+.navbar {
+  background-color: #7b6ed6;
+}
 
 #hex {
   font-family: 'Bungee', cursive;
