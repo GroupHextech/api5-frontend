@@ -1,11 +1,10 @@
 <script setup></script>
 
 <template>
-  <nav class="navbar bg-primary" data-bs-theme="dark">
+  <nav class="navbar fixed-top bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="../assets/dino-icon-white.svg" alt="Logo" width="30" height="24"
-          class="d-inline-block align-text-top">
+        <img src="../assets/dino-icon-white.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         <b id="hex">HEX</b><i id="taurant">taurant</i>
       </a>
       <form class="d-flex" role="search">
@@ -21,11 +20,11 @@
 
 #hex {
   font-family: 'Bungee', cursive;
-  font-size: larger;
+  font-size: 1.5rem;
 }
 
 #taurant {
   font-family: 'Satisfy', cursive;
-  font-size: large;
+  font-size: 1.2rem;
 }
 </style>
