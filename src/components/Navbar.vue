@@ -6,7 +6,7 @@
       <a class="navbar-brand" href="#">
         <img src="../assets/dino-icon-white.svg" alt="Logo" width="30" height="24"
           class="d-inline-block align-text-top">
-        <b>HEX</b><i id="taurant">taurant</i>
+        <b id="hex">HEX</b><i id="taurant">taurant</i>
       </a>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -17,9 +17,15 @@
 </template>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Satisfy&display=swap');
 
-  #taurant {
-    font-family: 'Satisfy', cursive;
-  }
+#hex {
+  font-family: 'Bungee', cursive;
+  font-size: larger;
+}
+
+#taurant {
+  font-family: 'Satisfy', cursive;
+  font-size: large;
+}
 </style>
