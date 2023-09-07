@@ -4,6 +4,12 @@
   <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
+        <router-link class="nav-link text-white" aria-current="page" to="/">
+          <i class="bi bi-clipboard-data"></i>
+          Dashboard
+        </router-link>
+      </li>
+      <li class="nav-item">
         <router-link class="nav-link active" aria-current="page" to="/">
           <i class="bi-grid"></i>
           Mesas
@@ -13,6 +19,30 @@
         <a class="nav-link text-white" href="#">
           <i class="bi-calendar-check"></i>
           Reservas
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">
+          <i class="bi bi-clipboard"></i>
+          Insumos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">
+          <i class="bi bi-chat-right-text"></i>
+          Feedback
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">
+          <i class="bi bi-people"></i>
+          Funcionarios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">
+          <i class="bi bi-box-seam"></i>
+          Fornecedores
         </a>
       </li>
     </ul>
