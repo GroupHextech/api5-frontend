@@ -4,9 +4,9 @@
   <nav class="navbar bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="/vite.svg" alt="Logo" width="30" height="24"
+        <img src="../assets/dino-icon-white.svg" alt="Logo" width="30" height="24"
           class="d-inline-block align-text-top">
-        Bootstrap
+        <b>HEX</b><i id="taurant">taurant</i>
       </a>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -16,4 +16,10 @@
   </nav>
 </template>
 
-<style scoped></style>
+<style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+  #taurant {
+    font-family: 'Satisfy', cursive;
+  }
+</style>
