@@ -18,12 +18,20 @@ const tables = [
 <template>
   <div>
     <h2>Mesas</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-2">
-      <div v-for="table in tables" class="col">
+    <ul>
+      <li v-for="table in tables">
         <Table :table="table"></Table>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+</style>
