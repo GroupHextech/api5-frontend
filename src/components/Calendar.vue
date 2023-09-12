@@ -26,7 +26,7 @@ const calendarFn = (weeks) => {
     https://vue3datepicker.com/props/calendar-configuration/
   -->
   <VueDatePicker v-model="date" auto-apply :close-on-auto-apply="false" :min-date="new Date()" :enable-time-picker="false"
-    week-start="0" :calendar="calendarFn" :format="'dd/MM/yyyy'" />
+    week-start="0" :calendar="calendarFn" :format="'dd/MM/yyyy'" locale="pt-BR" />
 </template>
 
 <style scoped></style>
