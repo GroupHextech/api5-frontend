@@ -7,8 +7,9 @@ export default {
   data() {},
   methods: {
       cardClass(table) {
-        if (table.status === 'livre') return 'text-bg-success'
         if (table.status === 'ocupada') return 'text-bg-danger'
+        if (table.status === 'reservada') return 'text-bg-secondary'
+        else return 'text-bg-success'
       }
     }
 }
