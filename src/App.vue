@@ -13,7 +13,7 @@ import Sidebar from './components/Sidebar.vue'
       <main class="main-content">
         <RouterView></RouterView>
       </main>
-      <footer class="footer py-4 py-md-4 mt-5 bg-body-tertiary">
+      <footer class="footer">
         <div class="container py-4 py-md-1 px-4 px-md-4 text-body-secondary">
           <div class="row">
             <div class="col-lg-9 mb-3">
@@ -25,7 +25,8 @@ import Sidebar from './components/Sidebar.vue'
                 <li class="mb-2">Desenvolvido e construído pelo <a
                     href="https://github.com/GroupHextech/HEXTECH-API5sem#team">Grupo HexTech</a> e por seus <a
                     href="https://github.com/GroupHextech/HEXTECH-API5sem/graphs/contributors">colaboradores</a>.</li>
-                <li class="mb-2">Código licenciado pelo <a
+              
+               <li class="mb-2">Código licenciado pelo <a
                     href="https://github.com/GroupHextech/api5-frontend/blob/main/LICENSE" target="_blank"
                     rel="license noopener">MIT</a>, documento <a href="https://creativecommons.org/licenses/by/3.0/"
                     target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
@@ -98,8 +99,22 @@ import Sidebar from './components/Sidebar.vue'
   transition: all 0.5s ease;
 }
 .footer {
-  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.181);
+  bottom: 0.5rem;
   position: fixed;
-  width: 100%
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  height: 20%;
+  align-items: end;
+}
+
+.footer ul{
+  display: flex;
+  gap: 1px;
+}
+
+.footer ul li{
+  border-right: 2px solid rgba(0, 0, 0, 0.412);
 }
 </style>

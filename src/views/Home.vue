@@ -1,5 +1,5 @@
 <script setup>
-import Tables from '../components/Tables.vue'; 
+import Tables from '../components/Tables.vue'
 </script>
 
 <template>

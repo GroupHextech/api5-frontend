@@ -4,14 +4,14 @@ const props = defineProps(['table'])
 
 <script>
 export default {
-  data() {},
+  data() { },
   methods: {
-      cardClass(table) {
-        if (table.status === 'livre') return 'text-bg-success'
-        if (table.status === 'ocupada') return 'text-bg-danger'
-        if (table.status === 'reservada') return 'text-bg-secondary'
-      }
+    cardClass(table) {
+      if (table.status === 'ocupada') return 'text-bg-danger'
+      if (table.status === 'reservada') return 'text-bg-secondary'
+      else return 'text-bg-success'
     }
+  }
 }
 </script>
 
