@@ -5,7 +5,7 @@ const tables = [
   { id: 1, status: 'livre' },
   { id: 2, status: 'ocupada' },
   { id: 3, status: 'livre' },
-  { id: 4, status: 'livre' },
+  { id: 4, status: 'reservada' },
   { id: 5, status: 'livre' },
   { id: 6, status: 'ocupada' },
   { id: 7, status: 'ocupada' },
