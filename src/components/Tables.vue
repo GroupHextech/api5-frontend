@@ -7,7 +7,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 
 const date = ref(new Date());
 
-const reservas = [
+const reservas = [ 
   {
     "_id": "64ffbaf85dcde2f69731d576",
     "data": "30/09/2023",
@@ -288,7 +288,30 @@ const reservas = [
 
 const filteredTables = computed(() => {
   const selectedDate = date.value.toLocaleDateString('pt-BR')
-  return reservas.filter(reserva => reserva.data === selectedDate)
+  const reservasEmData = reservas.filter(reserva => reserva.data === selectedDate)
+
+  // Se a data não existir no objeto reservas, cria uma nova lista com todas as mesas como livres
+  if (reservasEmData.length === 0) {
+    return [
+      {
+        "data": selectedDate,
+        "tables": [
+          { "id": 1, "status": "livre" },
+          { "id": 2, "status": "livre" },
+          { "id": 3, "status": "livre" },
+          { "id": 4, "status": "livre" },
+          { "id": 5, "status": "livre" },
+          { "id": 6, "status": "livre" },
+          { "id": 7, "status": "livre" },
+          { "id": 8, "status": "livre" },
+          { "id": 9, "status": "livre" },
+          { "id": 10, "status": "livre" }
+        ]
+      }
+    ]
+  } else {
+    return reservasEmData
+  }
 })
 
 const updateDate = () => {
@@ -302,15 +325,16 @@ const updateDate = () => {
     <h2>Mesas</h2>
     <p>
       <VueDatePicker v-model="date" auto-apply :close-on-auto-apply="false" :min-date="new Date()"
-        :enable-time-picker="false" week-start="0" :format="'dd/MM/yyyy'" locale="pt-BR" @update:model-value="updateDate" />
+        :enable-time-picker="false" week-start="0" :format="'dd/MM/yyyy'" locale="pt-BR"
+        @update:model-value="updateDate" />
     </p>
-      <div v-for="reserva in filteredTables" :key="reserva._id">
-        <ul>
-          <li v-for="table in reserva.tables" :key="table.id">
-            <Table :table="table"></Table>
-          </li>
-        </ul>
-      </div>
+    <div v-for="reserva in filteredTables" :key="reserva._id">
+      <ul>
+        <li v-for="table in reserva.tables" :key="table.id">
+          <Table :table="table"></Table>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
