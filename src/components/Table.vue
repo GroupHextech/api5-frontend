@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted } from 'vue'
 
+const props = defineProps(['table'])
+
 onMounted(() => {
   const exampleModal = document.getElementById('reservationForm')
   exampleModal.addEventListener('show.bs.modal', event => {
@@ -22,8 +24,6 @@ onMounted(() => {
     modalBodyInput.value = tableId
   })
 })
-
-const props = defineProps(['table'])
 </script>
 
 <script>
@@ -52,13 +52,13 @@ export default {
         <div class="card-title">{{ table.id }}</div>
         <button type="button" data-bs-toggle="modal" data-bs-target="#reservationForm" class="btn stretched-link"
           :class="linkClass(table)" :data-table-id="table.id" :data-table-status="table.status"><i
-            class="bi bi-info-circle-fill"></i></button>
+            class="bi bi-arrow-right-circle"></i></button>
       </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="reservationForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="reservationFormLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="reservationFormLabel">Mesa</h1>
@@ -80,27 +80,179 @@ export default {
                 </div>
               </div>
             </form>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Produtos</th>
-                  <th scope="col">Quantidade</th>
-                  <th scope="col">Preço</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td>
-                    <button class="btn btn-sm btn-light"><i class="bi bi-dash-lg"></i></button>
-                    <input class="form-control" />
-                    <button class="btn btn-sm btn-light"><i class="bi bi-plus-lg"></i></button>
-                  </td>
-                  <td></td>
-                  <td><button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-              </tbody>
-            </table>
+            <!-- Carrinho -->
+            <div class="h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-normal mb-0 text-black">Produtos</h3>
+                    <div>
+                      <p class="mb-0"><span class="text-muted">Filtrar por:</span> <a href="#!" class="text-body">preço <i
+                            class="bi bi-chevron-down mt-1"></i></a></p>
+                    </div>
+                  </div>
+
+                  <div class="card rounded-3 mb-3">
+                    <div class="card-body p-4">
+                      <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="bi bi-dash-lg"></i>
+                          </button>
+
+                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                            class="form-control form-control-sm" />
+
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="bi bi-plus-lg"></i>
+                          </button>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h5 class="mb-0">$499.00</h5>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card rounded-3 mb-3">
+                    <div class="card-body p-4">
+                      <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="bi bi-dash-lg"></i>
+                          </button>
+
+                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                            class="form-control form-control-sm" />
+
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="bi bi-plus-lg"></i>
+                          </button>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h5 class="mb-0">$499.00</h5>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card rounded-3 mb-3">
+                    <div class="card-body p-4">
+                      <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="bi bi-dash-lg"></i>
+                          </button>
+
+                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                            class="form-control form-control-sm" />
+
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="bi bi-plus-lg"></i>
+                          </button>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h5 class="mb-0">$499.00</h5>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card rounded-3 mb-3">
+                    <div class="card-body p-4">
+                      <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="bi bi-dash-lg"></i>
+                          </button>
+
+                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                            class="form-control form-control-sm" />
+
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="bi bi-plus-lg"></i>
+                          </button>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h5 class="mb-0">$499.00</h5>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card mb-3">
+                    <div class="card-body p-4 d-flex flex-row">
+                      <div class="form-outline flex-fill">
+                        <input type="text" id="form1" class="form-control form-control-lg" />
+                        <label class="form-label" for="form1">Discound code</label>
+                      </div>
+                      <button type="button" class="btn btn-outline-warning btn-lg ms-3">Apply</button>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-body">
+                      <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -116,5 +268,9 @@ export default {
 .card {
   padding: 0;
   text-align: center;
+}
+
+#status{
+  text-transform: uppercase;
 }
 </style>
