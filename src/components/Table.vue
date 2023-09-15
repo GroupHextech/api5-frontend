@@ -101,8 +101,8 @@ export default {
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                          <p class="lead fw-normal mb-2">Batata Frita</p>
+                          <p><span class="text-muted">Tamanho: </span>M <span class="text-muted">Obs: </span>Com sal</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2"
@@ -119,7 +119,7 @@ export default {
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">$499.00</h5>
+                          <h5 class="mb-0">R$14,00</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
@@ -136,8 +136,8 @@ export default {
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                          <p class="lead fw-normal mb-2">Refrigerante</p>
+                          <p><span class="text-muted">Tamanho: </span>350ml <span class="text-muted">Obs: </span>--</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2"
@@ -154,7 +154,7 @@ export default {
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">$499.00</h5>
+                          <h5 class="mb-0">R$6,00</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
@@ -171,8 +171,8 @@ export default {
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                          <p class="lead fw-normal mb-2">Suco de laranja</p>
+                          <p><span class="text-muted">Tamanho: </span>700ml <span class="text-muted">Obs: </span>--</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2"
@@ -189,7 +189,7 @@ export default {
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">$499.00</h5>
+                          <h5 class="mb-0">R$12,00</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
@@ -206,8 +206,8 @@ export default {
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                          <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                          <p class="lead fw-normal mb-2">Hambúrguer</p>
+                          <p><span class="text-muted">Tamanho: </span>G <span class="text-muted">Obs: </span>Sem molho especial</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2"
@@ -224,7 +224,7 @@ export default {
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">$499.00</h5>
+                          <h5 class="mb-0">R$35,00</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
@@ -237,15 +237,15 @@ export default {
                     <div class="card-body p-4 d-flex flex-row">
                       <div class="form-outline flex-fill">
                         <input type="text" id="form1" class="form-control form-control-lg" />
-                        <label class="form-label" for="form1">Discound code</label>
+                        <label class="form-label" for="form1">Código de desconto</label>
                       </div>
-                      <button type="button" class="btn btn-outline-warning btn-lg ms-3">Apply</button>
+                      <button type="button" class="btn btn-outline-warning btn-lg ms-3">Aplicar</button>
                     </div>
                   </div>
 
                   <div class="card">
                     <div class="card-body">
-                      <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                      <button type="button" class="btn btn-warning btn-block btn-lg">Continuar para o pagamento</button>
                     </div>
                   </div>
 
