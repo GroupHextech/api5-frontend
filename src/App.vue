@@ -99,7 +99,7 @@ import Sidebar from './components/Sidebar.vue'
   transition: all 0.5s ease;
 }
 .footer {
-  background-color: rgba(0, 0, 0, 0.181);
+  background-color: rgb(255, 255, 255);
   bottom: 0.5rem;
   position: fixed;
   width: 100%;
@@ -109,12 +109,4 @@ import Sidebar from './components/Sidebar.vue'
   align-items: end;
 }
 
-.footer ul{
-  display: flex;
-  gap: 1px;
-}
-
-.footer ul li{
-  border-right: 2px solid rgba(0, 0, 0, 0.412);
-}
 </style>
