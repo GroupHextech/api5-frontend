@@ -22,10 +22,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i class="bi bi-clipboard"></i>
+        <router-link class="nav-link" aria-current="page" to="insumos">
+          <i class="bi-grid"></i>
           Insumos
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="#">
