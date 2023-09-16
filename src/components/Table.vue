@@ -97,7 +97,7 @@ export default {
                     <div class="card-body p-4">
                       <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                          <img src="https://acdn.mitiendanube.com/stores/690/117/products/batatablacknovo01-com-batata1-1b7acadeecc786836815623317173381-480-0.jpg"
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
@@ -132,7 +132,7 @@ export default {
                     <div class="card-body p-4">
                       <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                          <img src="https://loja.supermerclick.com.br/image/cache/catalog/produtos-integracao/002693-omie___coca-cola-1500ml__conv-1000x1000.jpg"
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
@@ -167,7 +167,7 @@ export default {
                     <div class="card-body p-4">
                       <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                          <img src="https://lasaporitta.com.br/wp-content/uploads/2021/01/sucodelaranja.jpg"
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
@@ -202,7 +202,7 @@ export default {
                     <div class="card-body p-4">
                       <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwBlYonRHJvpwQnrOgAoZkoDYb8lHVF_Gtw&usqp=CAU"
                             class="img-fluid rounded-3" alt="Cotton T-shirt">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
@@ -230,22 +230,6 @@ export default {
                           <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <div class="card mb-3">
-                    <div class="card-body p-4 d-flex flex-row">
-                      <div class="form-outline flex-fill">
-                        <input type="text" id="form1" class="form-control form-control-lg" />
-                        <label class="form-label" for="form1">Código de desconto</label>
-                      </div>
-                      <button type="button" class="btn btn-outline-warning btn-lg ms-3">Aplicar</button>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-body">
-                      <button type="button" class="btn btn-warning btn-block btn-lg">Continuar para o pagamento</button>
                     </div>
                   </div>
 
