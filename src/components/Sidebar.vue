@@ -22,10 +22,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" aria-current="page" to="insumos">
-          <i class="bi-grid"></i>
+        <a class="nav-link text-white" href="insumos">
+          <i class="bi bi-grid"></i>
           Insumos
-        </router-link>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="#">
@@ -45,8 +45,16 @@
           Fornecedores
         </a>
       </li>
-    </ul>
+      <div class="separator"></div>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="sobre">
+          <i class="bi bi-info-circle"></i>
+          Sobre
+        </a>
+      </li>
+    </ul>     
   </div>
+
 </template>
 
 <style scoped>
@@ -54,6 +62,7 @@
 
 #sidebar {
   height: 100%;
+  display: flex;
 }
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
@@ -73,5 +82,10 @@
 #taurant {
   font-family: 'Satisfy', cursive;
   font-size: 1.2rem;
+}
+
+.separator {
+    border-top: 1px solid #fff;
+    margin: 10px;
 }
 </style>
