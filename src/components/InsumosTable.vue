@@ -48,7 +48,7 @@ export default {
   { id: 8, produto: 'Arroz', qtd: 50, validade: '2023-12-25', dataCompra: '2023-09-09', fornecedor: 'Fornecedor B', preco: 3.99 },
   { id: 9, produto: 'Feijão', qtd: 22, validade: '2023-12-28', dataCompra: '2023-09-08', fornecedor: 'Fornecedor C', preco: 2.49 },
   { id: 10, produto: 'Óleo de Cozinha', qtd: 18, validade: '2023-12-30', dataCompra: '2023-09-10', fornecedor: 'Fornecedor A', preco: 4.99 },
- /*{ id: 11, produto: 'Leite', qtd: 40, validade: '2023-12-22', dataCompra: '2023-09-11', fornecedor: 'Fornecedor B', preco: 2.99 },
+  { id: 11, produto: 'Leite', qtd: 40, validade: '2023-12-22', dataCompra: '2023-09-11', fornecedor: 'Fornecedor B', preco: 2.99 },
   { id: 12, produto: 'Ovos', qtd: 60, validade: '2023-12-20', dataCompra: '2023-09-12', fornecedor: 'Fornecedor C', preco: 1.89 },
   { id: 13, produto: 'Pão', qtd: 80, validade: '2023-12-15', dataCompra: '2023-09-13', fornecedor: 'Fornecedor A', preco: 3.49 },
   { id: 14, produto: 'Açúcar', qtd: 25, validade: '2023-12-28', dataCompra: '2023-09-14', fornecedor: 'Fornecedor B', preco: 2.19 },
@@ -87,10 +87,10 @@ export default {
   { id: 47, produto: 'Macadâmias', qtd: 12, validade: '2023-12-25', dataCompra: '2023-10-17', fornecedor: 'Fornecedor B', preco: 11.49 },
   { id: 48, produto: 'Pistaches', qtd: 8, validade: '2023-12-18', dataCompra: '2023-10-18', fornecedor: 'Fornecedor C', preco: 10.99 },
   { id: 49, produto: 'Sementes de Girassol', qtd: 10, validade: '2023-12-28', dataCompra: '2023-10-19', fornecedor: 'Fornecedor A', preco: 4.99 },
-  { id: 50, produto: 'Sementes de Abóbora', qtd: 14, validade: '2023-12-30', dataCompra: '2023-10-20', fornecedor: 'Fornecedor B', preco: 5.49 }*/
+  { id: 50, produto: 'Sementes de Abóbora', qtd: 14, validade: '2023-12-30', dataCompra: '2023-10-20', fornecedor: 'Fornecedor B', preco: 5.49 }
 
 
-      ] // Inicialmente, os dados de insumos estão vazios
+      ] 
     };
   },
   mounted() {
@@ -112,6 +112,9 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 table th,
@@ -122,7 +125,7 @@ table td {
 }
 
 table th {
-  background-color: #f2f2f2;
+  background-color: #a3a3a3;
   font-weight: bold;
 }
 
@@ -132,14 +135,12 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Estilos para o componente pai */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Estilos para o componente pai */
 h1 {
   font-size: 28px;
   margin-bottom: 20px;
