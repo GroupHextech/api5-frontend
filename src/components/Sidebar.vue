@@ -28,7 +28,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link text-white" aria-current="page" to="/">
+        <router-link class="nav-link text-white" aria-current="page" to="/Feedback">
           <i class="bi bi-chat-right-text"></i>
           Feedback
         </router-link>
@@ -59,6 +59,10 @@
 .nav-pills .show>.nav-link {
   color: #fff;
   background-color: #7b6ed6;
+}
+
+.nav-pills{
+  text-align: left;
 }
 
 .navbar {
