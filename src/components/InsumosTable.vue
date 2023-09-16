@@ -112,8 +112,10 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra de 10px de desfoque em todas as direções */
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Raio do arredondamento das bordas da tabela */
+  overflow: hidden; /* Para garantir que as bordas arredondadas sejam visíveis */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.384);
 }
 
 table th,
@@ -121,11 +123,10 @@ table td {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
-
 }
 
 table th {
-  background-color: #7b6ed6;
+  background-color:var(--roxohex);
   font-weight: bold;
 }
 

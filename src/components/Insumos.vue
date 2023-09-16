@@ -22,9 +22,9 @@ export default {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 5px;
   /* Defina a altura máxima para a área de rolagem */
-  max-height: 400px;
+  max-height: 500px;
   /* Adicione overflow-y para criar uma área de rolagem vertical */
   overflow-y: auto;
 }
