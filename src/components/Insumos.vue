@@ -27,7 +27,6 @@ export default {
   max-height: 400px;
   /* Adicione overflow-y para criar uma área de rolagem vertical */
   overflow-y: auto;
-  overflow-y: hidden;
 }
 
 .table-container {

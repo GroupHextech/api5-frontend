@@ -108,7 +108,10 @@ import Sidebar from './components/Sidebar.vue'
   height: 20%;
   align-items: end;
 }
-
+footer {
+  max-height: 50px; /* Defina a altura máxima desejada */
+  overflow: hidden; /* Para ocultar o conteúdo que excede a altura máxima */
+}
 .footer ul{
   display: flex;
   gap: 1px;
