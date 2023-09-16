@@ -115,7 +115,7 @@ table {
   border: 1px solid #ddd;
   border-radius: 10px; /* Raio do arredondamento das bordas da tabela */
   overflow: hidden; /* Para garantir que as bordas arredondadas sejam visíveis */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.384);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 table th,

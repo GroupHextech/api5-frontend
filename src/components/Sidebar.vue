@@ -47,7 +47,7 @@
       </li>
       <div class="separator"></div>
       <li class="nav-item">
-        <a class="nav-link text-white" href="sobre">
+        <a class="nav-link text-white" href="about">
           <i class="bi bi-info-circle"></i>
           Sobre
         </a>
