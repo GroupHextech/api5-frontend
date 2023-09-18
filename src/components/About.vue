@@ -3,7 +3,7 @@
           <div class="row">
             <div class="col-lg-9 mb-3">
               <a class="d-inline-flex mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="HEXTECH">
-                <img src="./assets/dino-icon.svg" alt="Logo" width="32" class="d-inline-block align-text-top">
+                <img src="../assets/dino-icon.svg" alt="Logo" width="32" class="d-inline-block align-text-top">
                 <span class="fs-5"><b id="hex">HEXTECH</b></span>
               </a>
               <ul class="list-unstyled small">

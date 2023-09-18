@@ -146,4 +146,13 @@ h1 {
   font-size: 28px;
   margin-bottom: 20px;
 }
+
+input{
+  background-color: #7c6ed660;
+  border-radius: 5px;
+  color: black;
+  
+
+ 
+}
 </style>

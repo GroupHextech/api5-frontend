@@ -23,7 +23,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="insumos">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-clipboard"></i>
           Insumos
         </a>
       </li>
