@@ -17,11 +17,9 @@ onMounted(() => {
     // Update the modal's content.
     const modalTitle = exampleModal.querySelector('.modal-title')
     const modalStatus = exampleModal.querySelector('#status')
-    const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
     modalTitle.textContent = `Mesa ${tableId}`
     modalStatus.textContent = tableStatus
-    modalBodyInput.value = tableId
   })
 })
 </script>
@@ -29,6 +27,38 @@ onMounted(() => {
 <script>
 export default {
   data() {
+    return {
+      produtos: [
+        {
+          id: 1,
+          nome: 'Batata Frita',
+          descricao: 'Tamanho: M, Obs: Com sal',
+          preco: 14.0,
+          imagem: 'https://acdn.mitiendanube.com/stores/690/117/products/batatablacknovo01-com-batata1-1b7acadeecc786836815623317173381-480-0.jpg',
+        },
+        {
+          id: 2,
+          nome: 'Refrigerante',
+          descricao: 'Tamanho: 350ml, Obs: --',
+          preco: 6.0,
+          imagem: 'https://loja.supermerclick.com.br/image/cache/catalog/produtos-integracao/002693-omie___coca-cola-1500ml__conv-1000x1000.jpg',
+        },
+        {
+          id: 3,
+          nome: 'Suco de Laranja',
+          descricao: 'Tamanho: 700ml, Obs: --',
+          preco: 12.0,
+          imagem: 'https://lasaporitta.com.br/wp-content/uploads/2021/01/sucodelaranja.jpg',
+        },
+        {
+          id: 4,
+          nome: 'Hambúrguer',
+          descricao: 'Tamanho: G, Obs: Sem molho especial',
+          preco: 35.0,
+          imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwBlYonRHJvpwQnrOgAoZkoDYb8lHVF_Gtw&usqp=CAU',
+        },
+      ],
+    }
   },
   methods: {
     cardClass(table) {
@@ -81,7 +111,7 @@ export default {
               </div>
             </form>
             <!-- Carrinho -->
-            <div class="h-100">
+            <div class="h-100" v-if="table.status === 'ocupada'">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
 
@@ -93,141 +123,33 @@ export default {
                     </div>
                   </div>
 
-                  <div class="card rounded-3 mb-3">
+                  <div class="card rounded-3 mb-3" v-for="(produto, index) in produtos" :key="index">
                     <div class="card-body p-4">
                       <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://acdn.mitiendanube.com/stores/690/117/products/batatablacknovo01-com-batata1-1b7acadeecc786836815623317173381-480-0.jpg"
-                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                          <img :src="produto.imagem" class="img-fluid rounded-3" alt="Produto">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Batata Frita</p>
-                          <p><span class="text-muted">Tamanho: </span>M <span class="text-muted">Obs: </span>Com sal</p>
+                          <p class="lead fw-normal mb-2">{{ produto.nome }}</p>
+                          <p>{{ produto.descricao }}</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                          <button class="btn btn-link px-2" @click="decrementQuantity(index)">
                             <i class="bi bi-dash-lg"></i>
                           </button>
-
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                          <input :id="'form' + index" min="0" name="quantity" v-model="produto.quantidade" type="number"
                             class="form-control form-control-sm" />
-
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                          <button class="btn btn-link px-2" @click="incrementQuantity(index)">
                             <i class="bi bi-plus-lg"></i>
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">R$14,00</h5>
+                          <h5 class="mb-0">R$ {{ produto.preco.toFixed(2) }}</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card rounded-3 mb-3">
-                    <div class="card-body p-4">
-                      <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://loja.supermerclick.com.br/image/cache/catalog/produtos-integracao/002693-omie___coca-cola-1500ml__conv-1000x1000.jpg"
-                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Refrigerante</p>
-                          <p><span class="text-muted">Tamanho: </span>350ml <span class="text-muted">Obs: </span>--</p>
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                            <i class="bi bi-dash-lg"></i>
-                          </button>
-
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
-                            class="form-control form-control-sm" />
-
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                            <i class="bi bi-plus-lg"></i>
-                          </button>
-                        </div>
-                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">R$6,00</h5>
-                        </div>
-                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card rounded-3 mb-3">
-                    <div class="card-body p-4">
-                      <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://lasaporitta.com.br/wp-content/uploads/2021/01/sucodelaranja.jpg"
-                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Suco de laranja</p>
-                          <p><span class="text-muted">Tamanho: </span>700ml <span class="text-muted">Obs: </span>--</p>
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                            <i class="bi bi-dash-lg"></i>
-                          </button>
-
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
-                            class="form-control form-control-sm" />
-
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                            <i class="bi bi-plus-lg"></i>
-                          </button>
-                        </div>
-                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">R$12,00</h5>
-                        </div>
-                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card rounded-3 mb-3">
-                    <div class="card-body p-4">
-                      <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwBlYonRHJvpwQnrOgAoZkoDYb8lHVF_Gtw&usqp=CAU"
-                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2">Hambúrguer</p>
-                          <p><span class="text-muted">Tamanho: </span>G <span class="text-muted">Obs: </span>Sem molho especial</p>
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                            <i class="bi bi-dash-lg"></i>
-                          </button>
-
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
-                            class="form-control form-control-sm" />
-
-                          <button class="btn btn-link px-2"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                            <i class="bi bi-plus-lg"></i>
-                          </button>
-                        </div>
-                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h5 class="mb-0">R$35,00</h5>
-                        </div>
-                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><i class="bi bi-trash3-fill"></i></a>
+                          <a href="#!" class="text-danger" @click="removeProduct(index)">
+                            <i class="bi bi-trash3-fill"></i>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -254,7 +176,7 @@ export default {
   text-align: center;
 }
 
-#status{
+#status {
   text-transform: uppercase;
 }
 </style>
