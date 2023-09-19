@@ -174,10 +174,7 @@
     align-items: center;
     .star-container {
       display: flex;
-      .star-svg {
-      }
-    }
-    .indicator {
+     
     }
     .star-container:not(:last-child) {
       margin-right: 5px;
