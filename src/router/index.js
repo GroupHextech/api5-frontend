@@ -5,6 +5,8 @@ import Insumos from '../views/Insumos.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 
+const base = '/api5-frontend';
+
 const routes = [
     { path: '/', component: Home },
     { path: '/insumos', component: Insumos },
@@ -13,7 +15,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(base),
     routes,
 });
 
