@@ -8,8 +8,8 @@ import Feedback from '../views/Feedback.vue'
 const routes = [
     { path: '/', component: Home },
     { path: '/insumos', component: Insumos },
-    {path: '/about', component: About },
-    {path: '/Feedback', component: Feedback }
+    { path: '/about', component: About },
+    { path: '/feedback', component: Feedback }
 ];
 
 const router = createRouter({

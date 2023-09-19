@@ -30,7 +30,7 @@ import { RouterLink } from 'vue-router';
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link text-white" aria-current="page" to="/Feedback">
+        <router-link class="nav-link text-white" aria-current="page" to="/feedback">
           <i class="bi bi-chat-right-text"></i>
           Feedback
         </router-link>
