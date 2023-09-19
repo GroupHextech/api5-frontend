@@ -15,7 +15,7 @@
 
 
 <script>
-import InsumosTable from './InsumosTable.vue';
+import InsumosTable from '../components/InsumosTable.vue';
 
 export default {
   components: {
