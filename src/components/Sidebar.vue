@@ -24,7 +24,7 @@ import { RouterLink } from 'vue-router';
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link text-white" aria-current="page" to="insumos">
+        <router-link class="nav-link text-white" aria-current="page" to="/insumos">
           <i class="bi bi-clipboard"></i>
           Insumos
         </router-link>
