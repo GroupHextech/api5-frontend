@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
 
 <template>
   <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
@@ -22,10 +24,10 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="insumos">
+        <router-link class="nav-link text-white" aria-current="page" to="insumos">
           <i class="bi bi-clipboard"></i>
           Insumos
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link text-white" aria-current="page" to="/Feedback">
@@ -47,10 +49,10 @@
       </li>
       <div class="separator"></div>
       <li class="nav-item">
-        <a class="nav-link text-white" href="about">
+        <router-link class="nav-link text-white" aria-current="page" to="about">
           <i class="bi bi-info-circle"></i>
           Sobre
-        </a>
+        </router-link>
       </li>
     </ul>     
   </div>
