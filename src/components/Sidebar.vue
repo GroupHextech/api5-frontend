@@ -16,34 +16,34 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+        <router-link class="nav-link text-white" aria-current="page" to="/">
           <i class="bi-calendar-check"></i>
           Reservas
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+        <router-link class="nav-link text-white" aria-current="page" to="/">
           <i class="bi bi-clipboard"></i>
           Insumos
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+        <router-link class="nav-link text-white" aria-current="page" to="/Feedback">
           <i class="bi bi-chat-right-text"></i>
           Feedback
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+        <router-link class="nav-link text-white" aria-current="page" to="/">
           <i class="bi bi-people"></i>
           Funcionarios
-        </a>
+        </router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+        <router-link class="nav-link text-white" aria-current="page" to="/">
           <i class="bi bi-box-seam"></i>
           Fornecedores
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -59,6 +59,10 @@
 .nav-pills .show>.nav-link {
   color: #fff;
   background-color: #7b6ed6;
+}
+
+.nav-pills{
+  text-align: left;
 }
 
 .navbar {

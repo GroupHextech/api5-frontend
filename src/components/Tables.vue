@@ -7,7 +7,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 
 const date = ref(new Date());
 
-const reservas = [ 
+const reservas = [
   {
     "_id": "64ffbaf85dcde2f69731d576",
     "data": "30/09/2023",
