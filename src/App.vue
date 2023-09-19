@@ -60,4 +60,5 @@ import Sidebar from './components/Sidebar.vue'
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 </style>
