@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <h1>Controle de Insumos do Restaurante</h1>
-      <a class="nav-link btn-entra-sai" href="insumos">
+      <a class="nav-link btn-entra-sai" href="/entrasaida">
           <i class="bi bi-arrow-down-up"></i>
           Entradas e Saídas
         </a>
@@ -16,6 +16,7 @@
 
 <script>
 import InsumosTable from '../components/InsumosTable.vue';
+import EntradaSaidas from '../components/EntradaSaidas.vue';
 
 export default {
   components: {
