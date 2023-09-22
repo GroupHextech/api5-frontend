@@ -2,16 +2,23 @@
   <div>
     <div class="container">
       <h1>Controle de Insumos do Restaurante</h1>
-      <a class="nav-link btn-entra-sai" href="/entrasaida">
-          <i class="bi bi-arrow-down-up"></i>
-          Entradas e Saídas
-        </a>
+      <a class="nav-link btn-entra-sai" @click="mostrarComponenteEntradaSaida">
+        <i class="iconeBotao"></i>
+        {{ textoBotao}}
+      </a>
     </div>
     <div class="table-container">
-      <insumos-table></insumos-table>
+      <template v-if="mostrarEntradaSaida">
+        <EntradaSaidas></EntradaSaidas>
+      </template>
+      <template v-else>
+        <InsumosTable></InsumosTable>
+      </template>
     </div>
   </div>
 </template>
+
+
 
 
 <script>
@@ -19,8 +26,26 @@ import InsumosTable from '../components/InsumosTable.vue';
 import EntradaSaidas from '../components/EntradaSaidas.vue';
 
 export default {
+  data() {
+    return {
+      mostrarEntradaSaida: false,
+      textoBotao: 'Entradas e Saídas',
+      iconeBotao: 'bi bi-arrow-down-up',
+    };
+  },
+
   components: {
-    InsumosTable
+    InsumosTable,
+    EntradaSaidas
+  },
+
+
+methods: {
+    mostrarComponenteEntradaSaida() {
+      this.mostrarEntradaSaida = !this.mostrarEntradaSaida;
+      this.textoBotao = this.mostrarEntradaSaida ? 'Insumos' : 'Entradas e Saídas';
+      this.iconeBotao = this.mostrarEntradaSaida ? 'bi bi-clipboard' : 'bi bi-arrow-down-up'
+    }
   }
 };
 </script>
@@ -38,6 +63,7 @@ export default {
   border-radius: 10px;
   width: 150px;
   box-shadow: 0 1 10px rgba(0, 0, 0, 0.525);
+  cursor:pointer;
 }
 
 .table-container {
