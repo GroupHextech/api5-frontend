@@ -1,7 +1,12 @@
 <template>
   <div>
     <h2>Tabela de Insumos</h2>
-    <input type="text" v-model="pesquisa" placeholder="Pesquisar por nome do insumo" />
+    <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
+  </div>
+  <input type="text" class="form-control search" placeholder="Pesquisar insumo">
+  </div>
     <table>
       <thead>
         <tr>
@@ -147,12 +152,16 @@ h1 {
   margin-bottom: 20px;
 }
 
-input{
+.input-group{
+  width: 20rem;
+  margin: 1rem;
+}
+.search{
   background-color: #7c6ed660;
   border-radius: 5px;
   color: black;
-  
-
- 
+}
+.search-icon{
+  background-color: #7c6ed660;
 }
 </style>

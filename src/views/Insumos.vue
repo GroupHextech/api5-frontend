@@ -2,10 +2,10 @@
   <div>
     <div class="container">
       <h1>Controle de Insumos do Restaurante</h1>
-      <a class="nav-link btn-entra-sai" @click="mostrarComponenteEntradaSaida">
-        <i class="iconeBotao"></i>
+      <button @click="mostrarComponenteEntradaSaida">
+        <i class='bi bi-table icone'></i>
         {{ textoBotao}}
-      </a>
+      </button>   
     </div>
     <div class="table-container">
       <template v-if="mostrarEntradaSaida">
@@ -30,7 +30,6 @@ export default {
     return {
       mostrarEntradaSaida: false,
       textoBotao: 'Entradas e Saídas',
-      iconeBotao: 'bi bi-arrow-down-up',
     };
   },
 
@@ -44,28 +43,30 @@ methods: {
     mostrarComponenteEntradaSaida() {
       this.mostrarEntradaSaida = !this.mostrarEntradaSaida;
       this.textoBotao = this.mostrarEntradaSaida ? 'Insumos' : 'Entradas e Saídas';
-      this.iconeBotao = this.mostrarEntradaSaida ? 'bi bi-clipboard' : 'bi bi-arrow-down-up'
     }
   }
 };
 </script>
 
 <style scoped]>
+.icone{
+  margin-right: 10px;
+}
 .container{
   display: flex;
   flex-direction: row;
 }
-.btn-entra-sai{
-  margin-left: 10rem;
-  padding-top: 1rem;
-  padding-left: 4px;
-  background-color: var(--roxohex);
+button{
   border-radius: 10px;
-  width: 150px;
-  box-shadow: 0 1 10px rgba(0, 0, 0, 0.525);
-  cursor:pointer;
+  background-color: var(--roxohex);
+  color: rgb(0, 0, 0);
+  margin-left: 5rem;
 }
-
+button:hover {
+  background-color: #7c6ed66b;
+  color: #000000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
 .table-container {
   /* Defina a largura máxima para a área de rolagem horizontal, se necessário */
   max-width: 100%;
