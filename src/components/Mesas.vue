@@ -117,7 +117,7 @@ onMounted(() => {
   exampleModal.addEventListener('show.bs.modal', event => {
 
     reservation.value.date = props.selectedDate;
-    reservation.value.tableId = selectedTable.value.name;
+    reservation.value.tableId = selectedTable.value.id;
     reservation.value.status = selectedTable.value.status;
 
     selectedTable.value.reservation = {
@@ -182,17 +182,6 @@ onMounted(() => {
                   <input type="text" class="form-control" id="inputPhone" v-model="reservation.clientPhone" required>
                 </div>
               </div>
-              <!--
-              <div class="row mb-3">
-                <label for="status" class="col-sm-2 col-form-label">Status:</label>
-                <div class="col-sm-10">
-                  <select class="form-select" v-model="reservation.status">
-                    <option value="livre">Livre</option>
-                    <option value="reservada">Reservada</option>
-                  </select>
-                </div>
-              </div>
-              -->
             </div>
 
             <div class="modal-footer">
@@ -203,34 +192,6 @@ onMounted(() => {
           </form>
         </div>
 
-      </div>
-    </div>
-
-    <!-- Lista de reservas -->
-
-    <div>
-      <h3>Datas</h3>
-      <div v-for="(reservationsByDate, date) in reservations" :key="date">
-        <h5>{{ date }}</h5>
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Mesa</th>
-              <th scope="col">Cliente</th>
-              <th scope="col">Telefone</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(reservation, index) in reservationsByDate" :key="index">
-              <!-- <td>{{ reservation.date ? reservation.date.toLocaleString() : 'N/A' }}</td> -->
-              <td>{{ reservation.tableId || 'N/A' }}</td>
-              <td>{{ reservation.clientName || 'N/A' }}</td>
-              <td>{{ reservation.clientPhone || 'N/A' }}</td>
-              <td>{{ reservation.status || 'N/A' }}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
 
