@@ -11,15 +11,8 @@ const startTime = ref({ minutes: 0 });
 
 const updateDate = () => {
   emit('updateDate', selectedDate.value); // Emita o valor da propriedade 'selectedDate'
-  clearTableStyles();
 };
 
-const clearTableStyles = () => {
-  // Percorra todas as mesas e remova o estilo 'secondary'
-  tables.value.forEach((table) => {
-    table.status = 'livre';
-  });
-};
 </script>
 
 <template>
