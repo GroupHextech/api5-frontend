@@ -6,7 +6,7 @@ import Insumos from '../views/Insumos.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 
-const base = '/api5-frontend';
+const base = '/api5-frontend/';
 
 const routes = [
     { 
