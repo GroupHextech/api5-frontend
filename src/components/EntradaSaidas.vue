@@ -18,7 +18,14 @@
           <th>Fornecedor</th>
           <th>Preço</th>
           <th>Qtd E/S</th>
-          <th>E/S</th>
+          <th>E/S
+          <select v-model="filtroStatus">
+          <option value="">Todos</option>
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saida</option>
+
+          </select>
+        </th>
         </tr>
       </thead>
       <tbody>
