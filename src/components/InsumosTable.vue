@@ -24,7 +24,7 @@
           <td>{{ insumo.id }}</td>
           <td>{{ insumo.produto }}</td>
           <td>{{ insumo.qtd }}</td>
-          <td>{{ insumo.validade }}</td>
+          <td :class="getClasseVal(insumo.validade)">{{ insumo.validade }}</td>
           <td>{{ insumo.dataCompra }}</td>
           <td>{{ insumo.fornecedor }}</td>
           <td>{{ insumo.preco }}</td>
@@ -37,6 +37,13 @@
 <script>
 import axios from 'axios';
 
+const dataAtual = new Date();
+const ano = dataAtual.getFullYear();
+const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+const dia = String(dataAtual.getDate()).padStart(2, '0'); 
+const dataFormatada = `${ano}-${mes}-${dia}`;
+
+
 //Excluir depois
 export default {
   data() {
@@ -44,14 +51,14 @@ export default {
       insumos: [
       
   { id: 1, produto: 'Carne Bovina', qtd: 10, validade: '2023-12-10', dataCompra: '2023-09-01', fornecedor: 'Fornecedor A', preco: 10.99 },
-  { id: 2, produto: 'Frango', qtd: 20, validade: '2023-12-15', dataCompra: '2023-09-03', fornecedor: 'Fornecedor B', preco: 7.49 },
+  { id: 2, produto: 'Frango', qtd: 20, validade: '2022-12-15', dataCompra: '2023-09-03', fornecedor: 'Fornecedor B', preco: 7.49 },
   { id: 3, produto: 'Peixe', qtd: 15, validade: '2023-12-08', dataCompra: '2023-09-02', fornecedor: 'Fornecedor C', preco: 12.99 },
   { id: 4, produto: 'Batata', qtd: 30, validade: '2023-12-20', dataCompra: '2023-09-05', fornecedor: 'Fornecedor A', preco: 2.99 },
   { id: 5, produto: 'Tomate', qtd: 25, validade: '2023-12-12', dataCompra: '2023-09-04', fornecedor: 'Fornecedor B', preco: 1.49 },
   { id: 6, produto: 'Cenoura', qtd: 35, validade: '2023-12-22', dataCompra: '2023-09-07', fornecedor: 'Fornecedor C', preco: 0.99 },
   { id: 7, produto: 'Cebola', qtd: 40, validade: '2023-12-18', dataCompra: '2023-09-06', fornecedor: 'Fornecedor A', preco: 0.79 },
   { id: 8, produto: 'Arroz', qtd: 50, validade: '2023-12-25', dataCompra: '2023-09-09', fornecedor: 'Fornecedor B', preco: 3.99 },
-  { id: 9, produto: 'Feijão', qtd: 22, validade: '2023-12-28', dataCompra: '2023-09-08', fornecedor: 'Fornecedor C', preco: 2.49 },
+  { id: 9, produto: 'Feijão', qtd: 22, validade: '2022-12-28', dataCompra: '2023-09-08', fornecedor: 'Fornecedor C', preco: 2.49 },
   { id: 10, produto: 'Óleo de Cozinha', qtd: 18, validade: '2023-12-30', dataCompra: '2023-09-10', fornecedor: 'Fornecedor A', preco: 4.99 },
   { id: 11, produto: 'Leite', qtd: 40, validade: '2023-12-22', dataCompra: '2023-09-11', fornecedor: 'Fornecedor B', preco: 2.99 },
   { id: 12, produto: 'Ovos', qtd: 60, validade: '2023-12-20', dataCompra: '2023-09-12', fornecedor: 'Fornecedor C', preco: 1.89 },
@@ -69,7 +76,7 @@ export default {
   { id: 24, produto: 'Refrigerante', qtd: 42, validade: '2023-12-31', dataCompra: '2023-09-24', fornecedor: 'Fornecedor C', preco: 3.99 },
   { id: 25, produto: 'Biscoitos', qtd: 48, validade: '2023-12-15', dataCompra: '2023-09-25', fornecedor: 'Fornecedor A', preco: 2.29 },
   { id: 26, produto: 'Chocolate', qtd: 20, validade: '2023-12-20', dataCompra: '2023-09-26', fornecedor: 'Fornecedor B', preco: 3.99 },
-  { id: 27, produto: 'Iogurte', qtd: 30, validade: '2023-12-08', dataCompra: '2023-09-27', fornecedor: 'Fornecedor C', preco: 1.99 },
+  { id: 27, produto: 'Iogurte', qtd: 30, validade: '2022-12-08', dataCompra: '2023-09-27', fornecedor: 'Fornecedor C', preco: 1.99 },
   { id: 28, produto: 'Laranjas', qtd: 65, validade: '2023-12-18', dataCompra: '2023-09-28', fornecedor: 'Fornecedor A', preco: 1.09 },
   { id: 29, produto: 'Maçãs', qtd: 75, validade: '2023-12-22', dataCompra: '2023-09-29', fornecedor: 'Fornecedor B', preco: 1.29 },
   { id: 30, produto: 'Bananas', qtd: 55, validade: '2023-12-10', dataCompra: '2023-09-30', fornecedor: 'Fornecedor C', preco: 0.89 },
@@ -98,6 +105,13 @@ export default {
       ] 
     };
   },
+  methods: {
+    getClasseVal(validade) {
+      return validade > dataFormatada ? '' : 'vermelho';
+    },
+  },
+  
+
   mounted() {
     // Fazer uma solicitação GET para o endpoint do backend para buscar os dados dos insumos
     axios.get('/api/insumos')
@@ -111,6 +125,13 @@ export default {
 };
 </script>
 <style scoped>
+.verde {
+  background-color: #00cc0075; /* Verde para linhas de entrada */
+}
+
+.vermelho {
+  background-color: #ff00005e; /* Vermelho para linhas de saída */
+}
 
 /* Estilos para a tabela */
 table {
@@ -163,5 +184,8 @@ h1 {
 }
 .search-icon{
   background-color: #7c6ed660;
+}
+.search:focus {
+  border: 2px solid var(--roxohex);
 }
 </style>

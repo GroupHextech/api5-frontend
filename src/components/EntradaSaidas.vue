@@ -36,6 +36,7 @@
       </tbody>
     </table>
   </div>
+  <console class="log">searchTerm</console>
 </template>
 
 <script>
@@ -45,6 +46,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      searchTerm: "",
+      filteredData: [], // Dados filtrados
       insumos: [
       
   { id: 1, produto: 'Carne Bovina', qtd: 10, validade: '2023-12-10', dataCompra: '2023-09-01', fornecedor: 'Fornecedor A', preco: 10.99 , qtdes: 1000 , es: 'Entrada' },
@@ -104,30 +107,47 @@ export default {
   },
   methods: {
     getClasseES(es) {
-      return es === 'Entrada' ? 'entrada' : 'saida';
+      return es === 'Entrada' ? 'verde' : 'vermelho';
     },
-  },
+
+  async fetchData() {
+    try {
+      const response = await axios.get('api5-frontend/insumos');
+      this.insumos = response.data; // Supondo que os dados são retornados como um array
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+  }
+},
+computed: {
+  filteredData() {
+    return this.insumos.filter(item =>
+      item.produto.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+},
 
   mounted() {
     // Fazer uma solicitação GET para o endpoint do backend para buscar os dados dos insumos
-    axios.get('/api/insumos')
+    axios.get('api5-frontend/insumos')
       .then(response => {
         this.insumos = response.data; // Atualiza os dados com a resposta do backend
       })
       .catch(error => {
         console.error('Erro ao buscar dados de insumos:', error);
       });
+      this.fetchData();
   }
 };
 </script>
 <style scoped>
 
 /* Estilos para a tabela */
-.entrada {
+.verde {
   background-color: #00cc0075; /* Verde para linhas de entrada */
 }
 
-.saida {
+.vermelho {
   background-color: #ff00005e; /* Vermelho para linhas de saída */
 }
 
@@ -136,8 +156,8 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
   border: 1px solid #ddd;
-  border-radius: 10px; /* Raio do arredondamento das bordas da tabela */
-  overflow: hidden; /* Para garantir que as bordas arredondadas sejam visíveis */
+  border-radius: 10px;
+  overflow: hidden; 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -153,7 +173,6 @@ table th {
   font-weight: bold;
 }
 
-/* Estilos para o cabeçalho da página */
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -181,5 +200,8 @@ h1 {
 }
 .search-icon{
   background-color: #7c6ed660;
+}
+.search:focus {
+  border: 2px solid var(--roxohex);
 }
 </style>
