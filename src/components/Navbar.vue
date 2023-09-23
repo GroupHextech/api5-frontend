@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <div class="d-flex col-sm-12">
         <div class="me-auto p-1">

@@ -18,7 +18,7 @@ import { RouterLink } from 'vue-router';
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link text-white" aria-current="page" to="/">
+        <router-link class="nav-link text-white" aria-current="page" to="/reservas">
           <i class="bi-calendar-check"></i>
           Reservas
         </router-link>
