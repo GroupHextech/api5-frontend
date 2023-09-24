@@ -1,5 +1,5 @@
 <template>
-  <h3>Feedback dos clientes</h3>
+  <h2>Feedback dos clientes</h2>
   <Estrelinhas :config="config"></Estrelinhas>
   <p class="line-star">
     <i class="bi bi-star-fill"></i>
