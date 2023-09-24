@@ -9,6 +9,13 @@ const tables = ref([
   { id: 1, name: 'Mesa 1', status: 'livre', isSelected: false },
   { id: 2, name: 'Mesa 2', status: 'livre', isSelected: false },
   { id: 3, name: 'Mesa 3', status: 'livre', isSelected: false },
+  { id: 4, name: 'Mesa 4', status: 'livre', isSelected: false },
+  { id: 5, name: 'Mesa 5', status: 'livre', isSelected: false },
+  { id: 6, name: 'Mesa 6', status: 'livre', isSelected: false },
+  { id: 7, name: 'Mesa 7', status: 'livre', isSelected: false },
+  { id: 8, name: 'Mesa 8', status: 'livre', isSelected: false },
+  { id: 9, name: 'Mesa 9', status: 'livre', isSelected: false },
+  { id: 10, name: 'Mesa 10', status: 'livre', isSelected: false },
   // Adicione mais mesas conforme necessário
 ]);
 

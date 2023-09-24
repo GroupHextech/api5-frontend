@@ -19,14 +19,8 @@ import Sidebar from './components/Sidebar.vue'
   </div>
 </template>
 <style scoped>
-#hex {
-  font-family: 'Bungee', cursive;
-  font-size: 1.5rem;
-}
-
-#taurant {
-  font-family: 'Satisfy', cursive;
-  font-size: 1.2rem;
+.header {
+  z-index: 1000;
 }
 
 .d-inline-flex,

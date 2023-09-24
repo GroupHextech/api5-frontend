@@ -7,7 +7,7 @@ import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 import EntraSai from '../components/EntradaSaidas.vue'
 
-const base = '/api5-frontend';
+const base = '/api5-frontend/';
 
 const routes = [
   
