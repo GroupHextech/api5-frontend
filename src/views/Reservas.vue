@@ -1,8 +1,9 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import DatePicker from '../components/DatePicker.vue'
 import Mesas from '../components/Mesas.vue'
 import ReservasList from '../components/ReservasList.vue'
+import axios from 'axios'
 
 const selectedDate = ref(null);
 const reservations = ref({});
@@ -36,6 +37,43 @@ const groupedReservations = computed(() => {
   }
 
   return grouped;
+});
+// Fazer a solicitação HTTP ao endpoint "/reserva/por-data" e processar os dados
+onMounted(async () => {
+  try {
+    const response = await axios.get('/reserva/por-data'); // Substitua pela URL correta do seu backend
+    const data = response.data;
+
+    // Processar os dados recebidos
+    for (const item of data) {
+      const [clientName, clientPhone, status, tableId, date] = item;
+      const rawDate = new Date(date);
+
+      // Formate a data e hora desejadas
+      const formattedDate = `${rawDate.toLocaleDateString()} ${rawDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+
+      // Fazer a substituição de status
+      const mappedStatus = status === 'Pendente' ? 'livre' : 'reservada';
+
+      // Criar a chave no formato desejado (data e hora)
+      const dateTime = formattedDate;
+
+      // Preencher as reservas
+      if (!reservations.value[dateTime]) {
+        reservations.value[dateTime] = [];
+      }
+
+      reservations.value[dateTime].push({
+        clientName,
+        clientPhone,
+        status: mappedStatus,
+        tableId,
+        date: formattedDate,
+      });
+    }
+  } catch (error) {
+    console.error('Erro ao buscar reservas:', error);
+  }
 });
 </script>
 

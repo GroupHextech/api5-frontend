@@ -1,5 +1,6 @@
 <template>
     <div class="star-rating">
+      <div>Média: </div>
       <div v-for="(star, index) in stars" :key="index" class="star-container">
         <svg
           class="star-svg"
@@ -170,6 +171,7 @@
   
   <style scoped>
   .star-rating {
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     .star-container {
