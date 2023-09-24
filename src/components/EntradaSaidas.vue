@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Tabela de Insumos</h2>
+    <h2>Tabela de Entradas e Saídas</h2>
     <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
@@ -12,53 +12,60 @@
         <tr>
           <th>ID</th>
           <th>Produto</th>
-          <th>Qtd</th>
+          <th>Qtd Atual</th>
           <th>Validade</th>
           <th>Data Compra</th>
           <th>Fornecedor</th>
           <th>Preço</th>
+          <th>Qtd E/S</th>
+          <th>E/S
+          <select v-model="filtroStatus">
+          <option value="">Todos</option>
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saida</option>
+
+          </select>
+        </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="insumo in insumos" :key="insumo.id">
+        <tr v-for="insumo in insumos" :key="insumo.id" :class="getClasseES(insumo.es)">
           <td>{{ insumo.id }}</td>
           <td>{{ insumo.produto }}</td>
           <td>{{ insumo.qtd }}</td>
-          <td :class="getClasseVal(insumo.validade)">{{ insumo.validade }}</td>
+          <td>{{ insumo.validade }}</td>
           <td>{{ insumo.dataCompra }}</td>
           <td>{{ insumo.fornecedor }}</td>
           <td>{{ insumo.preco }}</td>
+          <td>{{ insumo.qtdes }}</td>
+          <td>{{ insumo.es }}</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <console class="log">searchTerm</console>
 </template>
 
 <script>
 import axios from 'axios';
 
-const dataAtual = new Date();
-const ano = dataAtual.getFullYear();
-const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
-const dia = String(dataAtual.getDate()).padStart(2, '0'); 
-const dataFormatada = `${ano}-${mes}-${dia}`;
-
-
 //Excluir depois
 export default {
   data() {
     return {
+      searchTerm: "",
+      filteredData: [], // Dados filtrados
       insumos: [
       
-  { id: 1, produto: 'Carne Bovina', qtd: 10, validade: '2023-12-10', dataCompra: '2023-09-01', fornecedor: 'Fornecedor A', preco: 10.99 },
-  { id: 2, produto: 'Frango', qtd: 20, validade: '2022-12-15', dataCompra: '2023-09-03', fornecedor: 'Fornecedor B', preco: 7.49 },
+  { id: 1, produto: 'Carne Bovina', qtd: 10, validade: '2023-12-10', dataCompra: '2023-09-01', fornecedor: 'Fornecedor A', preco: 10.99 , qtdes: 1000 , es: 'Entrada' },
+  { id: 2, produto: 'Frango', qtd: 20, validade: '2023-12-15', dataCompra: '2023-09-03', fornecedor: 'Fornecedor B', preco: 7.49 },
   { id: 3, produto: 'Peixe', qtd: 15, validade: '2023-12-08', dataCompra: '2023-09-02', fornecedor: 'Fornecedor C', preco: 12.99 },
   { id: 4, produto: 'Batata', qtd: 30, validade: '2023-12-20', dataCompra: '2023-09-05', fornecedor: 'Fornecedor A', preco: 2.99 },
   { id: 5, produto: 'Tomate', qtd: 25, validade: '2023-12-12', dataCompra: '2023-09-04', fornecedor: 'Fornecedor B', preco: 1.49 },
   { id: 6, produto: 'Cenoura', qtd: 35, validade: '2023-12-22', dataCompra: '2023-09-07', fornecedor: 'Fornecedor C', preco: 0.99 },
-  { id: 7, produto: 'Cebola', qtd: 40, validade: '2023-12-18', dataCompra: '2023-09-06', fornecedor: 'Fornecedor A', preco: 0.79 },
+  { id: 7, produto: 'Cebola', qtd: 40, validade: '2023-12-18', dataCompra: '2023-09-06', fornecedor: 'Fornecedor A', preco: 0.79 , qtdes: 1000 , es: 'Entrada' },
   { id: 8, produto: 'Arroz', qtd: 50, validade: '2023-12-25', dataCompra: '2023-09-09', fornecedor: 'Fornecedor B', preco: 3.99 },
-  { id: 9, produto: 'Feijão', qtd: 22, validade: '2022-12-28', dataCompra: '2023-09-08', fornecedor: 'Fornecedor C', preco: 2.49 },
+  { id: 9, produto: 'Feijão', qtd: 22, validade: '2023-12-28', dataCompra: '2023-09-08', fornecedor: 'Fornecedor C', preco: 2.49 },
   { id: 10, produto: 'Óleo de Cozinha', qtd: 18, validade: '2023-12-30', dataCompra: '2023-09-10', fornecedor: 'Fornecedor A', preco: 4.99 },
   { id: 11, produto: 'Leite', qtd: 40, validade: '2023-12-22', dataCompra: '2023-09-11', fornecedor: 'Fornecedor B', preco: 2.99 },
   { id: 12, produto: 'Ovos', qtd: 60, validade: '2023-12-20', dataCompra: '2023-09-12', fornecedor: 'Fornecedor C', preco: 1.89 },
@@ -76,7 +83,7 @@ export default {
   { id: 24, produto: 'Refrigerante', qtd: 42, validade: '2023-12-31', dataCompra: '2023-09-24', fornecedor: 'Fornecedor C', preco: 3.99 },
   { id: 25, produto: 'Biscoitos', qtd: 48, validade: '2023-12-15', dataCompra: '2023-09-25', fornecedor: 'Fornecedor A', preco: 2.29 },
   { id: 26, produto: 'Chocolate', qtd: 20, validade: '2023-12-20', dataCompra: '2023-09-26', fornecedor: 'Fornecedor B', preco: 3.99 },
-  { id: 27, produto: 'Iogurte', qtd: 30, validade: '2022-12-08', dataCompra: '2023-09-27', fornecedor: 'Fornecedor C', preco: 1.99 },
+  { id: 27, produto: 'Iogurte', qtd: 30, validade: '2023-12-08', dataCompra: '2023-09-27', fornecedor: 'Fornecedor C', preco: 1.99 },
   { id: 28, produto: 'Laranjas', qtd: 65, validade: '2023-12-18', dataCompra: '2023-09-28', fornecedor: 'Fornecedor A', preco: 1.09 },
   { id: 29, produto: 'Maçãs', qtd: 75, validade: '2023-12-22', dataCompra: '2023-09-29', fornecedor: 'Fornecedor B', preco: 1.29 },
   { id: 30, produto: 'Bananas', qtd: 55, validade: '2023-12-10', dataCompra: '2023-09-30', fornecedor: 'Fornecedor C', preco: 0.89 },
@@ -106,25 +113,43 @@ export default {
     };
   },
   methods: {
-    getClasseVal(validade) {
-      return validade > dataFormatada ? '' : 'vermelho';
+    getClasseES(es) {
+      return es === 'Entrada' ? 'verde' : 'vermelho';
     },
-  },
-  
+
+  async fetchData() {
+    try {
+      const response = await axios.get('api5-frontend/insumos');
+      this.insumos = response.data; // Supondo que os dados são retornados como um array
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+  }
+},
+computed: {
+  filteredData() {
+    return this.insumos.filter(item =>
+      item.produto.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+},
 
   mounted() {
     // Fazer uma solicitação GET para o endpoint do backend para buscar os dados dos insumos
-    axios.get('/api/insumos')
+    axios.get('api5-frontend/insumos')
       .then(response => {
         this.insumos = response.data; // Atualiza os dados com a resposta do backend
       })
       .catch(error => {
         console.error('Erro ao buscar dados de insumos:', error);
       });
+      this.fetchData();
   }
 };
 </script>
 <style scoped>
+
+/* Estilos para a tabela */
 .verde {
   background-color: #00cc0075; /* Verde para linhas de entrada */
 }
@@ -133,14 +158,13 @@ export default {
   background-color: #ff00005e; /* Vermelho para linhas de saída */
 }
 
-/* Estilos para a tabela */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
   border: 1px solid #ddd;
-  border-radius: 10px; /* Raio do arredondamento das bordas da tabela */
-  overflow: hidden; /* Para garantir que as bordas arredondadas sejam visíveis */
+  border-radius: 10px;
+  overflow: hidden; 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -156,7 +180,6 @@ table th {
   font-weight: bold;
 }
 
-/* Estilos para o cabeçalho da página */
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
