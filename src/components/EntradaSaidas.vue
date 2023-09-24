@@ -10,7 +10,6 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
           <th>Produto</th>
           <th>Qtd Atual</th>
           <th>Validade</th>
@@ -19,26 +18,24 @@
           <th>Preço</th>
           <th>Qtd E/S</th>
           <th>E/S
-          <select v-model="filtroStatus">
+   <!--   <select v-model="filtroStatus">
           <option value="">Todos</option>
           <option value="Entrada">Entrada</option>
           <option value="Saida">Saida</option>
-
-          </select>
+          </select>                                       -->
         </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="insumo in insumosFiltrados" :key="insumo.id" :class="getClasseES(insumo.es)">
-          <td>{{ insumo.id }}</td>
-          <td>{{ insumo.produto.iteNome }}</td>
-          <td>{{ insumo.qtd }}</td>
-          <td>{{ insumo.validade }}</td>
-          <td>{{ insumo.dataCompra }}</td>
-          <td>{{ insumo.fornecedor.forNome }}</td>
-          <td>{{ insumo.preco }}</td>
-          <td>{{ insumo.qtdes }}</td>
-          <td>{{ insumo.es }}</td>
+        <tr v-for="(item, index) in itemsFiltrados" :key="index" :class="getClasseES(item.es)">
+          <td>{{ item.produto }}</td>    
+          <td>{{ item.qtd }}</td>        
+          <td>{{ item.validade }}</td>
+          <td>{{ item.dataCompra }}</td> 
+          <td>{{ item.preco }}</td>       
+          <td>{{ item.fornecedor }}</td>  
+          <td>{{ item.qtdes }}</td>
+          <td>{{ item.es }}</td>
         </tr>
       </tbody>
     </table>
@@ -52,41 +49,53 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      insumos: [],
+      items: [],
       search: '',
-      insumosFiltrados: [],
+      itemsFiltrados: [],
     };
   },
   methods: {
     getClasseES(es) {
-      return es === 'Entrada' ? 'verde' : 'vermelho';
+      return es === 'entrada' ? 'verde' : 'vermelho';
     },
     filtrarInsumos() {
   const term = this.search.toLowerCase().trim();
 
   if (term === '') {
-    this.insumosFiltrados = this.insumos;
+    this.itemsFiltrados = this.items;
   } else {  
-    this.insumosFiltrados = this.insumos.filter(insumo => {
+    this.itemsFiltrados = this.items.filter(items => {
       return (
-        insumo.produto.iteNome.toLowerCase().includes(term)
+        items.produto.toLowerCase().includes(term)
       );
     });
   }
-},
+},},
+mounted() {
+  axios.get('http://localhost:8080/insumos/entradas-saidas')
+    .then(response => {
+      this.items = response.data.map(itemData => {
+        return {
+          produto: itemData[0],  
+          qtd: itemData[1],        
+          validade: itemData[2],    
+          dataCompra: itemData[3],  
+          preco: itemData[4],       
+          fornecedor: itemData[5],
+          qtdes: itemData[6],
+          es: itemData[7]
+        };
+      });
+
+      this.itemsFiltrados = this.items;
+    })
+    .catch(error => {
+      console.error('Erro ao buscar dados de insumos:', error);
+    });
 },
 
-mounted() {
-    axios.get('http://localhost:8080/insumos')
-      .then(response => {
-        this.insumos = response.data;
-        this.insumosFiltrados = response.data;
-      })
-      .catch(error => {
-        console.error('Erro ao buscar dados de insumos:', error);
-      });
-  },
 };
+
 </script>
 <style scoped>
 

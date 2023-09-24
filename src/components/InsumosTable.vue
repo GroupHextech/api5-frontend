@@ -10,7 +10,6 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
           <th>Produto</th>
           <th>Qtd</th>
           <th>Validade</th>
@@ -20,14 +19,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="insumo in insumosFiltrados" :key="insumo.id">
-          <td>{{ insumo.id }}</td>
-          <td>{{ insumo.produto.iteNome }}</td>
-          <td>{{ insumo.qtd }}</td>
-          <td :class="getClasseVal(insumo.validade)">{{ insumo.validade }}</td>
-          <td>{{ insumo.dataCompra }}</td>
-          <td>{{ insumo.fornecedor.forNome }}</td>
-          <td>{{ insumo.preco }}</td>
+        <tr v-for="(item, index) in itemsFiltrados" :key="index">
+          <td>{{ item.produto }}</td>     <!-- Nome do Produto -->
+          <td>{{ item.qtd }}</td>         <!-- Quantidade -->
+          <td :class="getClasseVal(item.validade)">{{ item.validade }}</td>
+          <td>{{ item.dataCompra }}</td>  <!-- Data de Compra -->
+          <td>{{ item.preco }}</td>       <!-- Preço -->
+          <td>{{ item.fornecedor }}</td>  <!-- Fornecedor -->
         </tr>
       </tbody>
     </table>
@@ -46,9 +44,9 @@ const dataFormatada = `${ano}-${mes}-${dia}`;
 export default {
   data() {
     return {
-      insumos: [],
+      items: [],
       search: '',
-      insumosFiltrados: [],
+      itemsFiltrados: [],
     };
   },
   methods: {
@@ -59,27 +57,40 @@ export default {
   const term = this.search.toLowerCase().trim();
 
   if (term === '') {
-    this.insumosFiltrados = this.insumos;
+    this.itemsFiltrados = this.items;
   } else {  
-    this.insumosFiltrados = this.insumos.filter(insumo => {
+    this.itemsFiltrados = this.items.filter(items => {
       return (
-        insumo.produto.iteNome.toLowerCase().includes(term)
+        items.produto.toLowerCase().includes(term)
       );
     });
   }
 },},
 
-  mounted() {
-    axios.get('http://localhost:8080/insumos')
-      .then(response => {
-        this.insumos = response.data;
-        this.insumosFiltrados = response.data;
-      })
-      .catch(error => {
-        console.error('Erro ao buscar dados de insumos:', error);
+mounted() {
+  axios.get('http://localhost:8080/insumos')
+    .then(response => {
+      this.items = response.data.map(itemData => {
+        return {
+          produto: itemData[0],     // Nome do Produto
+          qtd: itemData[1],         // Quantidade
+          validade: itemData[2],    // Validade
+          dataCompra: itemData[3],  // Data de Compra
+          preco: itemData[4],       // Preço
+          fornecedor: itemData[5]   // Fornecedor
+        };
       });
-  },
+
+      // Defina os itens filtrados inicialmente como os itens completos
+      this.itemsFiltrados = this.items;
+    })
+    .catch(error => {
+      console.error('Erro ao buscar dados de insumos:', error);
+    });
+},
+
 };
+
 </script>
 
 <style scoped>
