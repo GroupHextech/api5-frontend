@@ -48,7 +48,7 @@ methods: {
 };
 </script>
 
-<style scoped]>
+<style scoped>
 .icone{
   margin-right: 10px;
 }
