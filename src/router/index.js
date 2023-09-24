@@ -5,10 +5,12 @@ import Reservas from '../views/Reservas.vue'
 import Insumos from '../views/Insumos.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
+import EntraSai from '../components/EntradaSaidas.vue'
 
 const base = '/api5-frontend/';
 
 const routes = [
+  
     { 
         path: '/',
         name: 'Home', 
@@ -34,7 +36,9 @@ const routes = [
         name: 'Feedback',
         component: Feedback 
     }
+
 ];
+
 
 const router = createRouter({
     history: createWebHistory(base),
