@@ -5,7 +5,9 @@ import Sidebar from './components/Sidebar.vue'
 
 <template>
   <div>
-    <Navbar></Navbar>
+    <header class="header">
+      <Navbar></Navbar>
+    </header>
     <div class="all-content">
       <aside class="sidebar">
         <Sidebar></Sidebar>
@@ -32,10 +34,19 @@ import Sidebar from './components/Sidebar.vue'
   align-items: baseline;
 }
 
+.header {
+  padding: 0;
+  margin: 0;
+  position: sticky;
+  border: 0 solid #d9d9e3;
+  transform: translateY(0%); 
+  top: 0px; 
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 24px 0px;
+}
+
 .main-content {
   padding: 1.2rem;
-  position: relative;
-  top: 64px;
+
 }
 
 .all-content {
@@ -45,11 +56,11 @@ import Sidebar from './components/Sidebar.vue'
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
 .sidebar {
   z-index: 1000;
   position: fixed;
   left: 250px;
-  top: 64px;
   width: 250px;
   height: 100%;
   margin-left: -250px;
@@ -60,5 +71,4 @@ import Sidebar from './components/Sidebar.vue'
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-
 </style>
