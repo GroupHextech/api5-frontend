@@ -32,8 +32,8 @@
           <td>{{ item.qtd }}</td>        
           <td>{{ item.validade }}</td>
           <td>{{ item.dataCompra }}</td> 
-          <td>{{ item.preco }}</td>       
           <td>{{ item.fornecedor }}</td>  
+          <td>{{ item.preco }}</td>       
           <td>{{ item.qtdes }}</td>
           <td>{{ item.es }}</td>
         </tr>

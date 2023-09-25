@@ -24,8 +24,8 @@
           <td>{{ item.qtd }}</td>         <!-- Quantidade -->
           <td :class="getClasseVal(item.validade)">{{ item.validade }}</td>
           <td>{{ item.dataCompra }}</td>  <!-- Data de Compra -->
-          <td>{{ item.preco }}</td>       <!-- Preço -->
           <td>{{ item.fornecedor }}</td>  <!-- Fornecedor -->
+          <td>{{ item.preco }}</td>       <!-- Preço -->
         </tr>
       </tbody>
     </table>
