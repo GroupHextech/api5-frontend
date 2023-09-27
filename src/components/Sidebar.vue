@@ -20,14 +20,20 @@ const isRouteActive = (path) => {
       </li>
       <li class="nav-item">
         <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/') }" aria-current="page" to="/">
-          <i class="bi-grid"></i>
+          <i class="bi bi-grid"></i>
           Mesas
         </router-link>
       </li>
       <li class="nav-item">
         <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/reservas') }" aria-current="page" to="/reservas">
-          <i class="bi-calendar-check"></i>
+          <i class="bi bi-calendar-check"></i>
           Reservas
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/receitas') }" aria-current="page" to="/receitas">
+          <i class="bi bi-currency-dollar"></i>
+          Receitas
         </router-link>
       </li>
       <li class="nav-item">
