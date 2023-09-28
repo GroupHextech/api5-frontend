@@ -79,7 +79,7 @@ onMounted(async () => {
 
 <template>
   <div id="reservas">
-    <h2>Reservas</h2>
+    <h2 class="page-title">Reservas</h2>
     <DatePicker @updateDate="onUpdateDate"></DatePicker>
     <Mesas v-if="selectedDate" :selectedDate="selectedDate" :reservations="reservations"></Mesas>
     <!-- <ReservasList v-if="hasReservations" :reservations="reservations"></ReservasList> -->

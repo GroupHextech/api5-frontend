@@ -67,6 +67,11 @@ button:focus-visible {
   padding: 0;
 }
 
+.page-title{
+  font-family: 'Anybody';
+  color: var(--bs-gray-dark)
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

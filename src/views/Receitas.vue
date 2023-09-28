@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Receitas</h2>
+    <h2 class="page-title">Receitas</h2>
     <div class="card">
       <ReceitasBarChart />
     </div>
@@ -12,4 +12,5 @@ import ReceitasBarChart from '../charts/ReceitasBarChart.vue';
 
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

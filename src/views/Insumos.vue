@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="container">
-      <h1>Controle de Insumos do Restaurante</h1>
+    <div class="d-flex justify-content-between">
+      <h2 class="page-title">Insumos</h2>
       <button @click="mostrarComponenteEntradaSaida">
         <i class='bi bi-table icone'></i>
-        {{ textoBotao}}
+        {{ textoBotao }}
       </button>   
     </div>
     <div class="table-container">
@@ -51,10 +51,6 @@ methods: {
 <style scoped>
 .icone{
   margin-right: 10px;
-}
-.container{
-  display: flex;
-  flex-direction: row;
 }
 button{
   border-radius: 10px;
