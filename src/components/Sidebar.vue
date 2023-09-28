@@ -55,7 +55,7 @@ const isRouteActive = (path) => {
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/fornecedores') }" aria-current="page" to="/">
+        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/fornecedores') }" aria-current="page" to="/fornecedores">
           <i class="bi bi-box-seam"></i>
           Fornecedores
         </router-link>

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Reservas from '../views/Reservas.vue'
 import Receitas from '../views/Receitas.vue'
 import Insumos from '../views/Insumos.vue'
+import Fornecedores from '../views/Fornecedores.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 
@@ -29,7 +30,12 @@ const routes = [
     { 
         path: '/insumos',
         name: 'Insumos',
-        component: Insumos 
+        component: Insumos
+    },
+    {
+        path: '/fornecedores',
+        name: 'Fornecedores',
+        component: Fornecedores
     },
     { 
         path: '/about',
