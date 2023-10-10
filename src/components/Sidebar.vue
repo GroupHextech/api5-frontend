@@ -60,6 +60,12 @@ const isRouteActive = (path) => {
           Fornecedores
         </router-link>
       </li>
+      <li class="nav-item">
+        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/upload') }" aria-current="page" to="upload">
+          <i class="bi bi-cloud-upload"></i>
+          Upload de CSV's
+        </router-link>
+      </li>
       <div class="separator"></div>
       <li class="nav-item">
         <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/about') }" aria-current="page" to="about">
