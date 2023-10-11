@@ -7,6 +7,7 @@ import Insumos from '../views/Insumos.vue'
 import Fornecedores from '../views/Fornecedores.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
+import Upload from '../views/UploadCsv.vue'
 
 const base = '/api5-frontend/';
 
@@ -46,6 +47,11 @@ const routes = [
         path: '/feedback',
         name: 'Feedback',
         component: Feedback 
+    },
+    {
+        path:'/upload',
+        name: 'Upload',
+        component: Upload
     }
 
 ];
