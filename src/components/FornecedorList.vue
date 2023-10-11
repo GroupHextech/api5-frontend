@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul id="fornecedor">
     <li v-for="fornecedor in fornecedores" :key="fornecedor.id">
       <Fornecedor :fornecedor="fornecedor" />
     </li>
@@ -25,3 +25,13 @@ const fornecedores = reactive([
   },
 ]);
 </script>
+
+<style scoped>
+#fornecedor {
+  padding-left: 0;
+  list-style-type: none;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+</style>
