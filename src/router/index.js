@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import Home from '../views/Home.vue'
 import Reservas from '../views/Reservas.vue'
 import Receitas from '../views/Receitas.vue'
-import Insumos from '../views/Insumos.vue'
+import Insumos from '../views/InsumosTemp.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 import Upload from '../views/UploadCsv.vue'
