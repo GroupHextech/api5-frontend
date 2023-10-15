@@ -1,7 +1,7 @@
 <template>
     <div>
       <iframe
-        width="1000"
+        width="1070"
         height="485"
         :src="powerBIReportEmbedUrl"
         frameborder="0"
