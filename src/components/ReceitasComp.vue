@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      powerBIReportEmbedUrl: "https://app.powerbi.com/view?r=eyJrIjoiZjA3OTAzYWItMTgyMC00OGQwLTg5YmItYmZjODFmY2VlYjUzIiwidCI6ImRkNDg5YTlkLTU4Y2EtNGI3Ny1iM2RkLWQ5MzYyZGJkMjdlZCJ9"
+      powerBIReportEmbedUrl: "https://app.powerbi.com/view?r=eyJrIjoiNDgwNmZjZGMtM2EwYi00M2RhLWEyMDQtMTk0MGM1ZTFiMTQ0IiwidCI6ImRkNDg5YTlkLTU4Y2EtNGI3Ny1iM2RkLWQ5MzYyZGJkMjdlZCJ9"
     };
   }
 };
