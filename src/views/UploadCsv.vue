@@ -1,6 +1,6 @@
 <template>
     <div class="text">
-        <h1>Upload de CSV's</h1>
+        <h2 class="page-title">Upload de CSV's</h2>
     </div>
     <div class="input-container">
         <i class="bi bi-cloud-upload icon"></i>

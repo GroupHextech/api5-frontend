@@ -37,7 +37,7 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@500&family=Bubblegum+Sans&family=Bungee&family=Satisfy&display=swap');
 
 .navbar {
   background-color: #7b6ed6;

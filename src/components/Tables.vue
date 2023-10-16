@@ -322,7 +322,7 @@ const updateDate = () => {
 
 <template>
   <div>
-    <h2>Mesas</h2>
+    <h2 class="page-title">Mesas</h2>
     <p>
       <VueDatePicker v-model="date" auto-apply :close-on-auto-apply="false" :min-date="new Date()"
         :enable-time-picker="false" week-start="0" :format="'dd/MM/yyyy'" locale="pt-BR"
