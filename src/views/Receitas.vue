@@ -1,11 +1,9 @@
 <template>
   <div>
     <h2 class="page-title">Receitas</h2>
-    <div class="card">
+    <!--div class="card">
       <ReceitasBarChart />
-    </div>
-  </div>
-  <div>
+    </div-->
     <ReceitasComp></ReceitasComp>
   </div>
 </template>

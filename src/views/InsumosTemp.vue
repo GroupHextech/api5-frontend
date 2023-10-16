@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Quadro Insumos</h2>
+      <h2 class="page-title">Insumos</h2>
     </div>
     <div>
       <InsumosDash></InsumosDash>

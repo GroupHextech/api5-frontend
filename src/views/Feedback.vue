@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Feedback dos Clientes</h2>
+      <h2 class="page-title">Feedback dos Clientes</h2>
     </div>
     <div>
       <DashFeedback></DashFeedback>
