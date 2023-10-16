@@ -13,7 +13,7 @@ const isRouteActive = (path) => {
   <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/dashboard') }" aria-current="page" to="/">
+        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/dashboard') }" aria-current="page" to="/dashboard">
           <i class="bi bi-clipboard-data"></i>
           Dashboard
         </router-link>

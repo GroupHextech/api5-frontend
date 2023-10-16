@@ -5,11 +5,15 @@
       <ReceitasBarChart />
     </div>
   </div>
+  <div>
+    <ReceitasComp></ReceitasComp>
+  </div>
 </template>
 
 <script setup>
 import ReceitasBarChart from '../charts/ReceitasBarChart.vue';
 
+import ReceitasComp from '../components/ReceitasComp.vue';
 </script>
 
 <style scoped>
