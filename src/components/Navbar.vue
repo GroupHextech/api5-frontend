@@ -1,4 +1,17 @@
-<script setup></script>
+<script>
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
+export default {
+    methods:{
+
+        showToatInfo(){
+            toast.info('Pepsi - 350ml: 100 unidades, Redbull 355ml: 50 Unidades, Batatas Lavadas: 30 unidades. Contra Filé Friboi: 20kg,         Cerveja Skol - 329ml: 20 Unidades',   {});
+        }
+    }
+}
+
+</script>
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -11,13 +24,15 @@
             <b id="hex">HEX</b><i id="taurant">taurant</i>
           </router-link>
         </div>
+
         <div class="p-1">
-          <button type="button" class="btn btn-primary position-relative">
-            <i class="bi bi-bell"></i><span
-              class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
-              <span class="visually-hidden">notifications</span></span>
+          <button type="button" @click="showToatInfo()" class="btn btn-info">
+            <i class="bi bi-bell"></i>
           </button>
         </div>
+
+
+        
         <div class="p-1">
           <div class="nav-item dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown"
