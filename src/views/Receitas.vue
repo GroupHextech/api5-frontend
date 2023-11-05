@@ -9,8 +9,6 @@
 </template>
 
 <script setup>
-import ReceitasBarChart from '../charts/ReceitasBarChart.vue';
-
 import ReceitasComp from '../components/ReceitasComp.vue';
 </script>
 

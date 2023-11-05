@@ -4,8 +4,8 @@
     </div>
     <div class="input-container">
         <i class="bi bi-cloud-upload icon"></i>
-        <div class="text-csv">Insira seu arquivo .CSV</div>
-        <input type="file" class="custom-file-label" @change="uploadFile">
+        <input class="custom-file-label" type="file" ref="fileInput" @change="selectFile" />
+    <button @click="uploadFile">Enviar</button>
     </div>
 </template>
 
@@ -15,20 +15,29 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      selectedFile: null
+      selectedFile: null,
     };
   },
   methods: {
-    async uploadFile() {
+    selectFile(e) {
+      this.selectedFile = e.target.files[0];
+    },
+    uploadFile() {
       const formData = new FormData();
-      formData.append('csvFile', this.selectedFile);
+      formData.append('file', this.selectedFile);
 
-      try {
-        await axios.post('/api/upload', formData);
-        console.log('Arquivo enviado com sucesso');
-      } catch (error) {
-        console.error('Erro ao enviar o arquivo', error);
-      }
+      axios
+        .post('/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          console.log('Arquivo enviado com sucesso', response.data);
+        })
+        .catch((error) => {
+          console.error('Erro ao enviar o arquivo', error);
+        });
     },
   },
 };
