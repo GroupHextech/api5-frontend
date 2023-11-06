@@ -32,30 +32,22 @@ export default {
         {
           id: 1,
           nome: 'Batata Frita',
-          descricao: 'Tamanho: M, Obs: Com sal',
           preco: 14.0,
-          imagem: 'https://acdn.mitiendanube.com/stores/690/117/products/batatablacknovo01-com-batata1-1b7acadeecc786836815623317173381-480-0.jpg',
         },
         {
           id: 2,
           nome: 'Refrigerante',
-          descricao: 'Tamanho: 350ml, Obs: --',
           preco: 6.0,
-          imagem: 'https://loja.supermerclick.com.br/image/cache/catalog/produtos-integracao/002693-omie___coca-cola-1500ml__conv-1000x1000.jpg',
         },
         {
           id: 3,
           nome: 'Suco de Laranja',
-          descricao: 'Tamanho: 700ml, Obs: --',
           preco: 12.0,
-          imagem: 'https://lasaporitta.com.br/wp-content/uploads/2021/01/sucodelaranja.jpg',
         },
         {
           id: 4,
           nome: 'Hambúrguer',
-          descricao: 'Tamanho: G, Obs: Sem molho especial',
           preco: 35.0,
-          imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHwBlYonRHJvpwQnrOgAoZkoDYb8lHVF_Gtw&usqp=CAU',
         },
       ],
     }
@@ -111,7 +103,7 @@ export default {
               </div>
             </form>
             <!-- Carrinho -->
-            <div class="h-100" v-if="table.status === 'ocupada'">
+            <div class="h-100" v-if="table.status === 'livre'">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
 
@@ -126,12 +118,8 @@ export default {
                   <div class="card rounded-3 mb-3" v-for="(produto, index) in produtos" :key="index">
                     <div class="card-body p-4">
                       <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-md-2 col-lg-2 col-xl-2">
-                          <img :src="produto.imagem" class="img-fluid rounded-3" alt="Produto">
-                        </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
                           <p class="lead fw-normal mb-2">{{ produto.nome }}</p>
-                          <p>{{ produto.descricao }}</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                           <button class="btn btn-link px-2" @click="decrementQuantity(index)">
@@ -178,5 +166,8 @@ export default {
 
 #status {
   text-transform: uppercase;
+}
+.lead {
+  text-align: start;
 }
 </style>

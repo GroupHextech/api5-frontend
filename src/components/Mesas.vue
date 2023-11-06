@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import MesaCard from './MesaCard.vue';
+import axios from 'axios';
 
 // const reservations = ref({});
 const props = defineProps(['selectedDate', 'reservations']);
@@ -25,7 +26,68 @@ const reservation = ref({
   clientName: '',
   clientPhone: '',
   status: 'livre',
+  itens: [],
 });
+
+const addProductToReservation = () => {
+  if (!valorSelect.value) {
+    return;
+  }
+
+  const produtoId = valorSelect.value;
+  const produto = pratos.value.find((prato) => prato[0] === produtoId);
+
+  if (produto) {
+    // Verifica se o produto já está na reserva
+    const existingProduct = reservation.value.itens.find((item) => item.praId === produto[0]);
+
+    if (existingProduct) {
+      // Se o produto já estiver na reserva, atualiza a quantidade
+      existingProduct.iteQuantidade++;
+    } else {
+      // Caso contrário, adiciona o produto à reserva
+      reservation.value.itens.push({
+        praId: produto[0],
+        iteQuantidade: 1,
+      });
+    }
+  }
+
+  // Redefine o valor do <select> para evitar que o mesmo item seja adicionado novamente sem selecionar outro
+  valorSelect.value = null;
+};
+
+const getProductName = (productId) => {
+  const produto = pratos.value.find((prato) => prato[0] === productId);
+  return produto ? produto[1] : '';
+};
+
+const getProductPrice = (productId) => {
+  const produto = pratos.value.find((prato) => prato[0] === productId);
+  return produto ? produto[2] : 0;
+};
+
+const decrementQuantity = (index) => {
+  const produto = reservation.value.itens[index];
+  if (produto && produto.iteQuantidade > 0) {
+    produto.iteQuantidade--;
+  }
+};
+
+const incrementQuantity = (index) => {
+  const produto = reservation.value.itens[index];
+  if (produto) {
+    produto.iteQuantidade++;
+  }
+};
+
+const removeProductFromReservation = (index) => {
+  reservation.value.itens.splice(index, 1);
+};
+
+const calculateTotalPrice = (produto) => {
+  return produto.iteQuantidade * getProductPrice(produto.praId);
+};
 
 const selectedTable = ref(null);
 
@@ -44,7 +106,6 @@ const selectTable = (table) => {
 };
 
 const reserveTable = () => {
-
   if (!props.selectedDate) {
     alert('Por favor, selecione uma data antes de reservar.');
     return;
@@ -65,21 +126,22 @@ const reserveTable = () => {
     return;
   }
 
-  // Preencha o objeto de reserva
+  // Preenche o objeto de reserva
   reservation.value.date = props.selectedDate;
-  reservation.value.tableId = selectedTable.value.id; // Use o nome da mesa
+  reservation.value.tableId = selectedTable.value.id; // Usa o nome da mesa
   reservation.value.status = 'reservada';
 
-  // Atualize o status da mesa selecionada
+  // Atualiza o status da mesa selecionada para "reservada"
   selectedTable.value.status = 'reservada';
 
-  // Crie uma nova reserva com base no formulário
+  // Cria uma nova reserva com base no formulário
   const newReservation = {
     date: props.selectedDate,
     tableId: selectedTable.value.id,
     clientName: reservation.value.clientName,
     clientPhone: reservation.value.clientPhone,
     status: reservation.value.status,
+    itens: reservation.value.itens, // Adiciona os itens à reserva
   };
 
   const dateKey = props.selectedDate;
@@ -88,10 +150,7 @@ const reserveTable = () => {
   }
   props.reservations[dateKey].push(newReservation);
 
-  // Atualize o status da mesa selecionada para "reservada"
-  selectedTable.value.status = 'reservada';
-
-  // Limpe o formulário após a reserva
+  // Limpa o formulário após a reserva
   clearReservationForm();
 };
 
@@ -117,6 +176,68 @@ const getTableStatus = (table) => {
   }
 
   return 'livre'; // Se não houver reserva para a mesa na data e hora selecionadas, a mesa é livre
+};
+
+const selectedSearch = ref(null);
+
+const onSearch = (search) => {
+  selectedSearch.value = search;
+}
+
+const pratos = ref([]);
+
+const getPratos = async () => {
+  try {
+    const response = await axios.get("/reserva/prato");
+    pratos.value = response.data;
+    console.log(pratos.value)
+  } catch (error) {
+    console.error("Erro ao buscar pratos:", error);
+  }
+};
+
+const valorSelect = ref(null);
+
+const sendPedido = async () => {
+  // Construa a estrutura de dados do pedido com base nos seus dados
+  const pedidoData = {
+    pedHoraPedido: new Date().toISOString(),
+    pedHoraEntregue: null, // Defina a data/hora de entrega conforme necessário
+    pedValorTotal: calculateTotalPriceForAllItens(), // Calcule o valor total dos itens
+    pedAvaliacao: null, // Defina a avaliação conforme necessário
+    resId: 5,
+    itens: reservation.value.itens.map((produto) => ({
+      praId: produto.praId,
+      iteQuantidade: produto.iteQuantidade,
+    })),
+  };
+
+  try {
+    // Faz uma chamada para o endpoint do backend para criar o pedido
+    const response = await axios.post('/reserva/pedidos', pedidoData);
+    // Lida com a resposta do backend conforme necessário
+    console.log('Pedido enviado com sucesso:', response.data);
+  } catch (error) {
+    console.error('Erro ao enviar o pedido:', error);
+  }
+};
+
+const calculateTotalPriceForAllItens = () => {
+  // Inicializa uma variável para rastrear o valor total
+  let totalPrice = 0;
+
+  // Percorre todos os itens na reserva e calcula o preço total para cada item
+  reservation.value.itens.forEach((produto) => {
+    const quantidade = produto.iteQuantidade;
+    const precoUnitario = getProductPrice(produto.praId);
+    const precoTotalItem = quantidade * precoUnitario;
+
+    // Adiciona o preço total deste item ao preço total geral
+    totalPrice += precoTotalItem;
+  });
+
+  // Retorna o preço total geral
+  return totalPrice;
 };
 
 onMounted(() => {
@@ -148,6 +269,8 @@ onMounted(() => {
     modalTitle.textContent = `Mesa ${tableId}`
     modalStatus.textContent = tableStatus
   })
+
+  getPratos();
 })
 </script>
 
@@ -168,7 +291,7 @@ onMounted(() => {
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down">
 
         <div class="modal-content">
-          <form @submit.prevent="reserveTable">
+          <form>
 
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="reservationFormLabel">Mesa</h1>
@@ -189,17 +312,75 @@ onMounted(() => {
                   <input type="text" class="form-control" id="inputPhone" v-model="reservation.clientPhone" required>
                 </div>
               </div>
+
+              <!-- Pedido -->
+              <div style="max-height: 300px; overflow-y: auto; overflow-x: hidden;">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                  <div class="col-12">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h3 class="fw-normal mb-0 text-black">Pedido</h3>
+                      <div>
+                        <select class="form-select" v-model="valorSelect">
+                          <option class="produto" v-for="prato in pratos" :key="prato[0]" :value="prato[0]">{{ prato[1] }}
+                            R$ {{ prato[2].toFixed(2) }}</option>
+                        </select>
+                        <button class="btn btn-primary" @click="addProductToReservation">Adicionar</button>
+                      </div>
+                    </div>
+
+                    <div class="card rounded-3 mb-3" v-for="(produto, index) in reservation.itens" :key="index">
+                      <div class="card-body p-1">
+                        <div class="row d-flex justify-content-between align-items-center">
+                          <div class="col-md-3 col-lg-3 col-xl-3">
+                            <p class="lead fw-normal mb-2">{{ getProductName(produto.praId) }}</p>
+                          </div>
+                          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                            <button class="btn btn-link px-2" @click="decrementQuantity(index)">
+                              <i class="bi bi-dash-lg"></i>
+                            </button>
+                            <input :id="'form' + index" min="0" name="quantity" v-model="produto.iteQuantidade"
+                              type="number" class="form-control form-control-sm" style="width: 40px;" />
+                            <button class="btn btn-link px-2" @click="incrementQuantity(index)">
+                              <i class="bi bi-plus-lg"></i>
+                            </button>
+                          </div>
+                          <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                            <h5 class="mb-0">R$ {{ calculateTotalPrice(produto).toFixed(2) }}</h5>
+                          </div>
+                          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                            <a href="#!" class="text-danger" @click="removeProductFromReservation(index)">
+                              <i class="bi bi-trash3-fill"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
             </div>
+
+
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary">Reservar</button>
+              <button type="button" class="btn btn-primary" @click="sendPedido">Enviar Pedido</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                @click="reserveTable">Reservar</button>
             </div>
 
           </form>
+
         </div>
 
       </div>
+    </div>
+
+    <div>
+      <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNDY5YjZkZWUtYzJiZi00OGJlLWJhYWItM2Q2MDZhNGRhMTI4IiwidCI6ImRkNDg5YTlkLTU4Y2EtNGI3Ny1iM2RkLWQ5MzYyZGJkMjdlZCJ9" frameborder="0" allowFullScreen="true"></iframe>
     </div>
 
   </div>
