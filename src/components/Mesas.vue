@@ -204,15 +204,8 @@ const sendPedido = async () => {
     pedHoraPedido: new Date().toISOString(),
     pedHoraEntregue: null, // Defina a data/hora de entrega conforme necessário
     pedValorTotal: calculateTotalPriceForAllItens(), // Calcule o valor total dos itens
-    pedAvaliacao: 5, // Defina a avaliação conforme necessário
-    reserva: {
-      resId: 8, // Defina o ID da reserva
-      resNome: reservation.value.clientName,
-      resTelefone: reservation.value.clientPhone,
-      resMesa: selectedTable.value.id,
-      resQtdPessoas: 2, // Defina a quantidade de pessoas conforme necessário
-      resDataHora: props.selectedDate, // Use a data/hora selecionada
-    },
+    pedAvaliacao: null, // Defina a avaliação conforme necessário
+    resId: 5,
     itens: reservation.value.itens.map((produto) => ({
       praId: produto.praId,
       iteQuantidade: produto.iteQuantidade,
