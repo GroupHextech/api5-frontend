@@ -178,12 +178,6 @@ const getTableStatus = (table) => {
   return 'livre'; // Se não houver reserva para a mesa na data e hora selecionadas, a mesa é livre
 };
 
-const selectedSearch = ref(null);
-
-const onSearch = (search) => {
-  selectedSearch.value = search;
-}
-
 const pratos = ref([]);
 
 const getPratos = async () => {

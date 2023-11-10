@@ -10,6 +10,7 @@ import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 import Upload from '../views/UploadCsv.vue'
 import Dashboard from '../views/Dashboard.vue'
+import GestaoDePessoas from '../views/GestaoDePessoas.vue'
 
 const base = '/api5-frontend/';
 
@@ -59,6 +60,11 @@ const routes = [
         path:'/dashboard',
         name: 'Dashboard',
         component: Dashboard
+    },
+    {
+        path:'/funcionarios',
+        name: 'Gestão de Pessoas',
+        component: GestaoDePessoas
     }
 
 ];
