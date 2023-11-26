@@ -1,29 +1,13 @@
 <template>
   <div>
-    <h2>Tabela de Entradas e Saídas</h2>
-    <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
-  </div>
-  <input type="text" class="form-control search" placeholder="Pesquisar insumo" v-model="search" @input="filtrarInsumos">
-  </div>
+    <h2>Tabela Fornecedor - Insumo</h2>
+
     <table>
       <thead>
         <tr>
           <th>Produto</th>
-          <th>Qtd Atual</th>
-          <th>Validade</th>
-          <th>Data Compra</th>
           <th>Fornecedor</th>
-          <th>Preço</th>
-          <th>Qtd E/S</th>
-          <th>E/S
-   <!--   <select v-model="filtroStatus">
-          <option value="">Todos</option>
-          <option value="Entrada">Entrada</option>
-          <option value="Saida">Saida</option>
-          </select>                                       -->
-        </th>
+          <th>Categoria</th>
         </tr>
       </thead>
       <tbody>
@@ -72,18 +56,13 @@ export default {
   }
 },},
 mounted() {
-  axios.get('http://localhost:8080/insumos/entradas-saidas')
+  axios.get('http://localhost:8080//estoque/nomeProduto')
     .then(response => {
       this.items = response.data.map(itemData => {
         return {
           produto: itemData[0],  
-          qtd: itemData[1],        
-          validade: itemData[2],    
-          dataCompra: itemData[3],  
-          preco: itemData[4],       
-          fornecedor: itemData[5],
-          qtdes: itemData[6],
-          es: itemData[7]
+          fornecedor: itemData[1],        
+          categoria: itemData[2],    
         };
       });
 

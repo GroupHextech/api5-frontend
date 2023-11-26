@@ -6,7 +6,7 @@ import Reservas from '../views/Reservas.vue'
 import Receitas from '../views/Receitas.vue'
 //import Insumos from '../views/Insumos.vue'
 import Fornecedores from '../views/Fornecedores.vue'
-import Insumos from '../views/InsumosTemp.vue'
+import Insumos from '../views/Insumos.vue'
 import About from '../views/About.vue'
 import Feedback from '../views/Feedback.vue'
 import Upload from '../views/UploadCsv.vue'
@@ -38,7 +38,7 @@ const routes = [
         path: '/receitas',
         name: 'Receitas',
         component: Receitas,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     },
     { 
         path: '/insumos',
@@ -50,37 +50,37 @@ const routes = [
         path: '/fornecedores',
         name: 'Fornecedores',
         component: Fornecedores,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     },
     { 
         path: '/about',
         name: 'About',
         component: About,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     },
     { 
         path: '/feedback',
         name: 'Feedback',
         component: Feedback,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     },
     {
         path:'/upload',
         name: 'Upload',
         component: Upload,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     },
     {
         path:'/dashboard',
         name: 'Dashboard',
         component: Dashboard,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     },
     {
         path:'/funcionarios',
         name: 'Gestão de Pessoas',
         component: GestaoDePessoas,
-        meta: { requiresAuth: true, redirectIfAuth: false },
+        meta: { requiresAuth: false, redirectIfAuth: false },
     }
 
 ];

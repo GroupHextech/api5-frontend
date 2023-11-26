@@ -3,17 +3,15 @@ import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import Sidebar from './components/Sidebar.vue';
 
-const isLoggedIn = ref(false);
+const isLoggedIn = ref(true);
 
-// Função para fazer login
+
 const login = () => {
-  // Lógica de autenticação aqui
   isLoggedIn.value = true;
 };
 
-// Função para fazer logout
 const logout = () => {
-  // Lógica de logout aqui
+
   isLoggedIn.value = false;
 };
 </script>
@@ -21,16 +19,16 @@ const logout = () => {
 <template>
   <div>
     <header class="header">
-      <!-- Renderizar o Navbar somente se estiver logado -->
+
       <Navbar v-if="isLoggedIn"></Navbar>
     </header>
     <div class="all-content">
       <aside class="sidebar">
-        <!-- Renderizar o Sidebar somente se estiver logado -->
+
         <Sidebar v-if="isLoggedIn"></Sidebar>
       </aside>
       <main class="main-content">
-        <!-- Componente RouterView permanece sempre renderizado -->
+
         <RouterView></RouterView>
       </main>
     </div>
