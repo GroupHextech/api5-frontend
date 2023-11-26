@@ -1,9 +1,6 @@
 <template>
   <div>
     <h2>Tabela Fornecedor X Insumo</h2>
-
-
-
     <table>
       <thead>
         <tr>
