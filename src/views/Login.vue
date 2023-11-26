@@ -66,6 +66,7 @@ export default {
 
 .container{
   background-color: #ffffff;
+  width: 100%;
 }
 .div-log{
   display: flex;

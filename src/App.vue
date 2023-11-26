@@ -1,21 +1,36 @@
 <script setup>
-import Navbar from './components/Navbar.vue'
-import Sidebar from './components/Sidebar.vue'
+import { ref } from 'vue';
+import Navbar from './components/Navbar.vue';
+import Sidebar from './components/Sidebar.vue';
 
+const isLoggedIn = ref(false);
 
+// Função para fazer login
+const login = () => {
+  // Lógica de autenticação aqui
+  isLoggedIn.value = true;
+};
 
+// Função para fazer logout
+const logout = () => {
+  // Lógica de logout aqui
+  isLoggedIn.value = false;
+};
 </script>
 
 <template>
   <div>
     <header class="header">
-      <Navbar></Navbar>
+      <!-- Renderizar o Navbar somente se estiver logado -->
+      <Navbar v-if="isLoggedIn"></Navbar>
     </header>
     <div class="all-content">
       <aside class="sidebar">
-        <Sidebar></Sidebar>
+        <!-- Renderizar o Sidebar somente se estiver logado -->
+        <Sidebar v-if="isLoggedIn"></Sidebar>
       </aside>
       <main class="main-content">
+        <!-- Componente RouterView permanece sempre renderizado -->
         <RouterView></RouterView>
       </main>
     </div>
@@ -63,7 +78,6 @@ import Sidebar from './components/Sidebar.vue'
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #37474F;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
