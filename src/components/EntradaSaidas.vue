@@ -1,25 +1,29 @@
 <template>
   <div>
-    <h2>Tabela Fornecedor - Insumo</h2>
+    <h2>Tabela Fornecedor X Insumo</h2>
+
+
 
     <table>
       <thead>
         <tr>
           <th>Produto</th>
           <th>Fornecedor</th>
-          <th>Categoria</th>
+          <th>Categoria
+              <select v-model="selectedCategoria" @change="filtrarPorCategoria" class="search">
+                <option value="">Todas as categorias</option>
+                <option v-for="categoria in categorias" :key="categoria" :value="categoria">
+                  {{ categoria }}
+                </option>
+              </select>
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in itemsFiltrados" :key="index" :class="getClasseES(item.es)">
           <td>{{ item.produto }}</td>    
-          <td>{{ item.qtd }}</td>        
-          <td>{{ item.validade }}</td>
-          <td>{{ item.dataCompra }}</td> 
-          <td>{{ item.fornecedor }}</td>  
-          <td>{{ item.preco }}</td>       
-          <td>{{ item.qtdes }}</td>
-          <td>{{ item.es }}</td>
+          <td>{{ item.fornecedor }}</td>        
+          <td>{{ item.categoria }}</td>
         </tr>
       </tbody>
     </table>
@@ -29,53 +33,55 @@
 <script>
 import axios from 'axios';
 
-//Excluir depois
 export default {
   data() {
     return {
       items: [],
       search: '',
       itemsFiltrados: [],
+      categorias: [], // Adicione a lista de categorias
+      selectedCategoria: '', // Adicione o estado para a categoria selecionada
     };
   },
   methods: {
     getClasseES(es) {
-      return es === 'entrada' ? 'verde' : 'vermelho';
+      return es === 'entrada';
     },
-    filtrarInsumos() {
-  const term = this.search.toLowerCase().trim();
+    filtrarPorCategoria() {
+      const term = this.search.toLowerCase().trim();
+      const categoriaSelecionada = this.selectedCategoria.toLowerCase().trim();
 
-  if (term === '') {
-    this.itemsFiltrados = this.items;
-  } else {  
-    this.itemsFiltrados = this.items.filter(items => {
-      return (
-        items.produto.toLowerCase().includes(term)
-      );
-    });
-  }
-},},
-mounted() {
-  axios.get('http://localhost:8080//estoque/nomeProduto')
-    .then(response => {
-      this.items = response.data.map(itemData => {
-        return {
-          produto: itemData[0],  
-          fornecedor: itemData[1],        
-          categoria: itemData[2],    
-        };
+      this.itemsFiltrados = this.items.filter(item => {
+        const matchProduto = item.produto.toLowerCase().includes(term);
+        const matchCategoria = categoriaSelecionada === '' || item.categoria.toLowerCase() === categoriaSelecionada;
+
+        return matchProduto && matchCategoria;
       });
+    },
+  },
+  mounted() {
+    axios.get('http://localhost:8080/estoque/nomeProduto')
+      .then(response => {
+        this.items = response.data.map(itemData => {
+          return {
+            produto: itemData[0],
+            fornecedor: itemData[1],
+            categoria: itemData[2],
+          };
+        });
 
-      this.itemsFiltrados = this.items;
-    })
-    .catch(error => {
-      console.error('Erro ao buscar dados de insumos:', error);
-    });
-},
+        // Obter categorias únicas usando um conjunto (Set)
+        this.categorias = [...new Set(this.items.map(item => item.categoria.toLowerCase()))];
 
+        this.itemsFiltrados = this.items;
+      })
+      .catch(error => {
+        console.error('Erro ao buscar dados de insumos:', error);
+      });
+  },
 };
-
 </script>
+
 <style scoped>
 
 /* Estilos para a tabela */
@@ -86,6 +92,7 @@ mounted() {
 .vermelho {
   background-color: #ff00005e; /* Vermelho para linhas de saída */
 }
+
 
 table {
   width: 100%;
@@ -124,13 +131,9 @@ h1 {
   font-size: 28px;
   margin-bottom: 20px;
 }
-
-.input-group{
-  width: 20rem;
-  margin: 1rem;
-}
 .search{
   background-color: #7c6ed660;
+  border: 1px solid black;
   border-radius: 5px;
   color: black;
 }
@@ -138,6 +141,6 @@ h1 {
   background-color: #7c6ed660;
 }
 .search:focus {
-  border: 2px solid var(--roxohex);
+  border: 2px solid black;
 }
 </style>
