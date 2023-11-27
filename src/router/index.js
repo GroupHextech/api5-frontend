@@ -17,14 +17,16 @@ const base = '/api5-frontend/';
 
 const routes = [
 
+
     { 
         path: '/',
         name: 'Home', 
         component: Home,
         meta: { requiresAuth: false, redirectIfAuth: false },
+
     },
-    { 
-        path: '/reservas', 
+    {
+        path: '/reservas',
         name: 'Reservas',
         component: Reservas,
         meta: { requiresAuth: false, redirectIfAuth: false },
@@ -35,7 +37,7 @@ const routes = [
         component: Receitas,
         meta: { requiresAuth: false, redirectIfAuth: false },
     },
-    { 
+    {
         path: '/insumos',
         name: 'Insumos',
         component: Insumos,
@@ -47,32 +49,34 @@ const routes = [
         component: Fornecedores,
         meta: { requiresAuth: false, redirectIfAuth: false },
     },
-    { 
+    {
         path: '/about',
         name: 'About',
         component: About,
         meta: { requiresAuth: false, redirectIfAuth: false },
+
     },
-    { 
+    {
         path: '/feedback',
         name: 'Feedback',
         component: Feedback,
         meta: { requiresAuth: false, redirectIfAuth: false },
+
     },
     {
-        path:'/upload',
+        path: '/upload',
         name: 'Upload',
         component: Upload,
         meta: { requiresAuth: false, redirectIfAuth: false },
     },
     {
-        path:'/dashboard',
+        path: '/dashboard',
         name: 'Dashboard',
         component: Dashboard,
         meta: { requiresAuth: false, redirectIfAuth: false },
     },
     {
-        path:'/funcionarios',
+        path: '/funcionarios',
         name: 'Gestão de Pessoas',
         component: GestaoDePessoas,
         meta: { requiresAuth: false, redirectIfAuth: false },
@@ -85,6 +89,7 @@ const router = createRouter({
     history: createWebHistory(base),
     routes,
 });
+
 
 router.beforeEach((to, from, next) => {
     const token = sessionStorage.getItem('authToken');
@@ -101,3 +106,4 @@ router.beforeEach((to, from, next) => {
   });
 
 export default router;
+
