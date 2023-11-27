@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       mostrarEntradaSaida: false,
-      textoBotao: 'Entradas e Saídas',
+      textoBotao: 'Fornecedor X Insumo',
     };
   },
 
@@ -42,7 +42,7 @@ export default {
 methods: {
     mostrarComponenteEntradaSaida() {
       this.mostrarEntradaSaida = !this.mostrarEntradaSaida;
-      this.textoBotao = this.mostrarEntradaSaida ? 'Insumos' : 'Entradas e Saídas';
+      this.textoBotao = this.mostrarEntradaSaida ? 'Insumos' : 'Fornecedor X Insumo';
     }
   }
 };

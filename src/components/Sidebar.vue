@@ -19,7 +19,7 @@ const isRouteActive = (path) => {
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/') }" aria-current="page" to="/">
+        <router-link :class="{ 'nav-link': true, 'active': isRouteActive('/home') }" aria-current="page" to="/home">
           <i class="bi bi-grid"></i>
           Mesas
         </router-link>
