@@ -16,14 +16,9 @@ import GestaoDePessoas from '../views/GestaoDePessoas.vue'
 const base = '/api5-frontend/';
 
 const routes = [
+
     { 
         path: '/',
-        name: 'Login', 
-        component: Login,
-        meta: { requiresAuth: false, redirectIfAuth: true },
-    },
-    { 
-        path: '/home',
         name: 'Home', 
         component: Home,
         meta: { requiresAuth: false, redirectIfAuth: false },
