@@ -198,7 +198,6 @@ const sendPedido = async () => {
     pedHoraPedido: new Date().toISOString(),
     pedHoraEntregue: null, // Defina a data/hora de entrega conforme necessário
     pedValorTotal: calculateTotalPriceForAllItens(), // Calcule o valor total dos itens
-    pedAvaliacao: null, // Defina a avaliação conforme necessário
     resId: 5,
     itens: reservation.value.itens.map((produto) => ({
       praId: produto.praId,
@@ -361,7 +360,7 @@ onMounted(() => {
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary" @click="sendPedido">Enviar Pedido</button>
+              <button type="button" class="btn btn-primary" @click="sendPedido">Salvar</button>
               <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
                 @click="reserveTable">Reservar</button>
             </div>
