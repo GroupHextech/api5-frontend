@@ -1,23 +1,40 @@
 <script setup>
-import Navbar from './components/Navbar.vue'
-import Sidebar from './components/Sidebar.vue'
+import { ref } from 'vue';
+import Navbar from './components/Navbar.vue';
+import Sidebar from './components/Sidebar.vue';
+
+const isLoggedIn = ref(true);
+
+
+const login = () => {
+  isLoggedIn.value = true;
+};
+
+const logout = () => {
+
+  isLoggedIn.value = false;
+};
 </script>
 
 <template>
   <div>
     <header class="header">
-      <Navbar></Navbar>
+
+      <Navbar v-if="isLoggedIn"></Navbar>
     </header>
     <div class="all-content">
       <aside class="sidebar">
-        <Sidebar></Sidebar>
+
+        <Sidebar v-if="isLoggedIn"></Sidebar>
       </aside>
       <main class="main-content">
+
         <RouterView></RouterView>
       </main>
     </div>
   </div>
 </template>
+
 <style scoped>
 .header {
   z-index: 1000;
@@ -59,7 +76,6 @@ import Sidebar from './components/Sidebar.vue'
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #37474F;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
