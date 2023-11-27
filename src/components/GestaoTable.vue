@@ -1,26 +1,27 @@
 <template>
     <div>
-      <h2>Tabela Forncedores</h2>
-            <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
-            </div>
-            <input type="text" class="form-control search" placeholder="Pesquisar insumo" v-model="search" @input="filtrarInsumos">
+      <h2>Tabela Funcionários</h2>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
         </div>
+        <input type="text" class="form-control search" placeholder="Pesquisar funcionário" v-model="search" @input="filtrarFuncionarios">
+      </div>
       <table>
         <thead>
           <tr>
-            <th>Produto</th>
-            <th>Fornecedor</th>
-            <th>Categoria
-            </th>
+            <th>Funcionário</th>
+            <th>Salário</th>
+            <th>Contratação</th>
+            <th>Cargo</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in itemsFiltrados" :key="index" :class="getClasseES(item.es)">
-            <td>{{ item.produto }}</td>    
-            <td>{{ item.fornecedor }}</td>        
-            <td>{{ item.categoria }}</td>
+            <td>{{ item.funcionario }}</td>
+            <td>{{ formatarSalario(item.salario) }}</td>
+            <td>{{ formatarData(item.contratacao) }}</td>
+            <td>{{ item.cargo }}</td>
           </tr>
         </tbody>
       </table>
@@ -30,7 +31,6 @@
   <script>
   import axios from 'axios';
   
-  //Excluir depois
   export default {
     data() {
       return {
@@ -40,42 +40,49 @@
       };
     },
     methods: {
+        formatarData(data) {
+      const dataObj = new Date(data);
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      return dataObj.toLocaleDateString('pt-BR', options);
+    },
+  
       getClasseES(es) {
-        return es === 'entrada' ;
+        return es === 'entrada';
       },
-      filtrarInsumos() {
-    const term = this.search.toLowerCase().trim();
+      filtrarFuncionarios() {
+        const term = this.search.toLowerCase().trim();
   
-    if (term === '') {
-      this.itemsFiltrados = this.items;
-    } else {  
-      this.itemsFiltrados = this.items.filter(items => {
-        return (
-          items.produto.toLowerCase().includes(term)
-        );
-      });
-    }
-  },},
-  mounted() {
-    axios.get('http://localhost:8080/funcionario/all')
-      .then(response => {
-        this.items = response.data.map(itemData => {
-          return {
-            produto: itemData[0],  
-            fornecedor: itemData[1],        
-            categoria: itemData[2],   
-          };
+        if (term === '') {
+          this.itemsFiltrados = this.items;
+        } else {
+          this.itemsFiltrados = this.items.filter(item => {
+            return item.funcionario.toLowerCase().includes(term);
+          });
+        }
+      },
+      formatarSalario(salario) {
+        return `R$ ${salario.toFixed(2)}`; // Adiciona o texto "R$" e formata o número para duas casas decimais
+      },
+    },
+    mounted() {
+      axios.get('http://localhost:8080/funcionario/all')
+        .then(response => {
+          this.items = response.data.map(itemData => {
+            return {
+              funcionario: itemData[0],
+              salario: itemData[1],
+              contratacao: itemData[2],
+              cargo: itemData[3],
+            };
+          });
+  
+          this.itemsFiltrados = this.items;
+        })
+        .catch(error => {
+          console.error('Erro ao buscar dados de funcionários:', error);
         });
-  
-        this.itemsFiltrados = this.items;
-      })
-      .catch(error => {
-        console.error('Erro ao buscar dados de insumos:', error);
-      });
-  },
-  
+    },
   };
-  
   </script>
   
   <style scoped>

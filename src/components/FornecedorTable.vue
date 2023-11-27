@@ -10,17 +10,19 @@
       <table>
         <thead>
           <tr>
-            <th>Produto</th>
             <th>Fornecedor</th>
-            <th>Categoria
-            </th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Endereço</th>
+
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in itemsFiltrados" :key="index" :class="getClasseES(item.es)">
-            <td>{{ item.produto }}</td>    
-            <td>{{ item.fornecedor }}</td>        
-            <td>{{ item.categoria }}</td>
+            <td>{{ item.fornecedor }}</td>    
+            <td>{{ item.telefone }}</td>        
+            <td>{{ item.email }}</td>
+            <td>{{ item.endereco }}</td>
           </tr>
         </tbody>
       </table>
@@ -61,9 +63,10 @@
       .then(response => {
         this.items = response.data.map(itemData => {
           return {
-            produto: itemData[0],  
-            fornecedor: itemData[1],        
-            categoria: itemData[2],   
+            fornecedor: itemData[1],  
+            telefone: itemData[2],        
+            email: itemData[4],  
+            endereco: itemData[3] 
           };
         });
   
