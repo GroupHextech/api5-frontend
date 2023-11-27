@@ -1,10 +1,15 @@
 <template>
-  <div class="dash">
-    <iframe height="600" :src="powerBIReportEmbedUrl" frameborder="0" allowFullScreen="true">
+  <div>
+    <iframe
+      width="1070"
+      height="485"
+      :src="powerBIReportEmbedUrl"
+      frameborder="0"
+      allowFullScreen="true">
     </iframe>
   </div>
 </template>
-  
+
 <script>
 export default {
   data() {
@@ -14,12 +19,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.dash {
-  height: 100%;
-}
-.dash, .dash iframe {
-  width: 100%;
-}
-</style>

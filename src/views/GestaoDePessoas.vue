@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex justify-content-between">
-      <h2 class="page-title">Insumos</h2>
+      <h2 class="page-title">Gestão de pessoas</h2>
       <button @click="mostrarComponenteEntradaSaida">
         <i class='bi bi-table icone'></i>
         {{ textoBotao }}
@@ -9,10 +9,10 @@
     </div>
     <div class="table-container">
       <template v-if="mostrarEntradaSaida">
-        <EntradaSaidas></EntradaSaidas>
+        <GestaoTable></GestaoTable>
       </template>
       <template v-else>
-        <InsumosTable></InsumosTable>
+        <DashGestao></DashGestao>
       </template>
     </div>
   </div>
@@ -22,27 +22,27 @@
 
 
 <script>
-import InsumosTable from '../components/InsumosTable.vue';
-import EntradaSaidas from '../components/EntradaSaidas.vue';
+import GestaoTable from '../components/GestaoTable.vue';
+import DashGestao from '../components/DashGestao.vue';
 
 export default {
   data() {
     return {
       mostrarEntradaSaida: false,
-      textoBotao: 'Fornecedor X Insumo',
+      textoBotao: 'Funcionários',
     };
   },
 
   components: {
-    InsumosTable,
-    EntradaSaidas
+    GestaoTable,
+    DashGestao
   },
 
 
 methods: {
     mostrarComponenteEntradaSaida() {
       this.mostrarEntradaSaida = !this.mostrarEntradaSaida;
-      this.textoBotao = this.mostrarEntradaSaida ? 'Insumos' : 'Fornecedor X Insumo';
+      this.textoBotao = this.mostrarEntradaSaida ? 'Dashboard' : 'Funcionários';
     }
   }
 };
@@ -69,8 +69,3 @@ button:hover {
   
 }
 </style>
-
-
-
-
-
