@@ -424,10 +424,6 @@ onMounted(() => {
       </div>
     </div>
 
-    <div>
-      <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNDY5YjZkZWUtYzJiZi00OGJlLWJhYWItM2Q2MDZhNGRhMTI4IiwidCI6ImRkNDg5YTlkLTU4Y2EtNGI3Ny1iM2RkLWQ5MzYyZGJkMjdlZCJ9" frameborder="0" allowFullScreen="true"></iframe>
-    </div>
-
   </div>
 </template>
 
