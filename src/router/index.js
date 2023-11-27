@@ -15,14 +15,14 @@ import GestaoDePessoas from '../views/GestaoDePessoas.vue'
 const base = '/api5-frontend/';
 
 const routes = [
-  
-    { 
+
+    {
         path: '/',
-        name: 'Home', 
-        component: Home 
+        name: 'Home',
+        component: Home
     },
-    { 
-        path: '/reservas', 
+    {
+        path: '/reservas',
         name: 'Reservas',
         component: Reservas
     },
@@ -31,7 +31,7 @@ const routes = [
         name: 'Receitas',
         component: Receitas
     },
-    { 
+    {
         path: '/insumos',
         name: 'Insumos',
         component: Insumos
@@ -41,28 +41,28 @@ const routes = [
         name: 'Fornecedores',
         component: Fornecedores
     },
-    { 
+    {
         path: '/about',
         name: 'About',
-        component: About 
-    },
-    { 
-        path: '/feedback',
-        name: 'Feedback',
-        component: Feedback 
+        component: About
     },
     {
-        path:'/upload',
+        path: '/feedback',
+        name: 'Feedback',
+        component: Feedback
+    },
+    {
+        path: '/upload',
         name: 'Upload',
         component: Upload
     },
     {
-        path:'/dashboard',
+        path: '/dashboard',
         name: 'Dashboard',
         component: Dashboard
     },
     {
-        path:'/funcionarios',
+        path: '/funcionarios',
         name: 'Gestão de Pessoas',
         component: GestaoDePessoas
     }

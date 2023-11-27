@@ -6,19 +6,41 @@ import axios from 'axios';
 // const reservations = ref({});
 const props = defineProps(['selectedDate', 'reservations']);
 
-const tables = ref([
-  { id: 1, name: 'Mesa 1', status: 'livre', isSelected: false },
-  { id: 2, name: 'Mesa 2', status: 'livre', isSelected: false },
-  { id: 3, name: 'Mesa 3', status: 'livre', isSelected: false },
-  { id: 4, name: 'Mesa 4', status: 'livre', isSelected: false },
-  { id: 5, name: 'Mesa 5', status: 'livre', isSelected: false },
-  { id: 6, name: 'Mesa 6', status: 'livre', isSelected: false },
-  { id: 7, name: 'Mesa 7', status: 'livre', isSelected: false },
-  { id: 8, name: 'Mesa 8', status: 'livre', isSelected: false },
-  { id: 9, name: 'Mesa 9', status: 'livre', isSelected: false },
-  { id: 10, name: 'Mesa 10', status: 'livre', isSelected: false },
-  // Adicione mais mesas conforme necessário
-]);
+const reservado = ref([]);
+
+const getReservado = async () => {
+  try {
+    const response = await axios.get("/reserva/reservado");
+    reservado.value = response.data;
+    console.log(reservado.value)
+  } catch (error) {
+    console.error("Erro ao buscar reserva:", error);
+  }
+};
+
+const ocupado = ref([]);
+
+const getOcupado = async () => {
+  try {
+    const ocupado = await axios.get("/reserva/ocupado");
+    ocupado.value = response.data;
+    console.log(ocupado.value)
+  } catch (error) {
+    console.error("Erro ao buscar reserva:", error);
+  }
+};
+
+const livre = ref([]);
+
+const getLivre = async () => {
+  try {
+    const livre = await axios.get("/reserva/livre");
+    livre.value = response.data;
+    console.log(livre.value)
+  } catch (error) {
+    console.error("Erro ao buscar reserva:", error);
+  }
+};
 
 const reservation = ref({
   date: null,
@@ -91,14 +113,42 @@ const calculateTotalPrice = (produto) => {
 
 const selectedTable = ref(null);
 
-const selectTable = (table) => {
-  selectedTable.value = table;
+const selectReservado = (reservado) => {
+  selectedTable.value = reservado;
 
   // Defina isSelected como true para a mesa selecionada
-  table.isSelected = true;
+  reservado.isSelected = true;
 
   // Atualize o estado de todas as outras mesas para false
-  tables.value.forEach((otherTable) => {
+  reservado.value.forEach((otherTable) => {
+    if (otherTable !== reservado) {
+      otherTable.isSelected = false;
+    }
+  });
+};
+
+  const selectOcupado = (ocupado) => {
+    selectedTable.value = ocupado;
+
+    // Defina isSelected como true para a mesa selecionada
+    ocupado.isSelected = true;
+
+    // Atualize o estado de todas as outras mesas para false
+    ocupado.value.forEach((otherTable) => {
+      if (otherTable !== table) {
+        otherTable.isSelected = false;
+      }
+    });
+  };
+
+const selectLivre = (livre) => {
+  selectedTable.value = livre;
+
+  // Defina isSelected como true para a mesa selecionada
+  livre.isSelected = true;
+
+  // Atualize o estado de todas as outras mesas para false
+  livre.value.forEach((otherTable) => {
     if (otherTable !== table) {
       otherTable.isSelected = false;
     }
@@ -213,6 +263,8 @@ const sendPedido = async () => {
   } catch (error) {
     console.error('Erro ao enviar o pedido:', error);
   }
+
+  
 };
 
 const calculateTotalPriceForAllItens = () => {
