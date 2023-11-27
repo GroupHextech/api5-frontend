@@ -53,7 +53,7 @@
     } else {  
       this.itemsFiltrados = this.items.filter(items => {
         return (
-          items.produto.toLowerCase().includes(term)
+          items.fornecedor.toLowerCase().includes(term)
         );
       });
     }
